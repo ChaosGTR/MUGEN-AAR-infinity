@@ -1,0 +1,22 @@
+; �����ɃL������������Ă�������
+[Info]
+name = "Aegis"        ;�L�����̖��O
+displayname = "Aegis" ;�\���������L�����̖��O
+versiondate = 05,15,2015    ;�L�����̍X�V����
+mugenversion = 10414   ;�L����������mugen�̃o�[�W����
+author = "�V�c�u�N"         ;�L�����̐����Җ�
+pal.defaults = 2      ;�G�Ƃ��Ăł��L�����̃p���b�g
+
+; Files for the player
+[Files]
+cmd     = Aegis.cmd   ;�L�����̃R�}���h
+cns     = Aegis.cns   ;�L�����̃v���O����
+st      = Aegis.cns   ;�L�����̃v���O����
+st1	= -3.cns
+st2	= -2.cns
+stcommon = common1.cns 
+sprite  = Aegis.sff   ;�L�����̊G
+anim    = Aegis.air   ;�L�����̓���
+sound   = Aegis.snd   ;�L�����̉�
+pal1    = 01.act  ;�L�����̐F�i�ő��P�Q�j
+pal2    = 02.act

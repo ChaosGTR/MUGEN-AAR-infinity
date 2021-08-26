@@ -1,0 +1,181 @@
+[Statedef -3]
+
+
+
+
+; 着地の際の振動
+[State -3, 1]
+type = EnvShake
+triggerall = Time = 1
+trigger1 = stateno = 52 
+time = 6
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 40
+trigger2 = stateno = 8100
+value = 40, 1
+
+[State -3, Landing Sound]
+type = PlaySnd
+trigger1 = Time = 1
+trigger1 = stateno = 52
+value = 52, 0
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Gametime%(15) = 0
+trigger1 = stateno = [8100,9100]
+trigger2 = stateno = 100 || stateno = 105
+value = 8100, 0
+
+[State -3, 2]
+type = Turn
+trigger1 = P2Dist X < 0
+;trigger1 = time = 10
+trigger1 = (stateno = 47) || (stateno = 51) || (stateno = 8300) || (stateno = 3031)
+
+;---------------------------------------------------------------------------
+;var(1) 種関係
+;var(2) 種
+;var(3) ブーメラン向き(投げたとき)
+;var(4) ブーメラン向き判定
+;var(5) p2name
+
+;var(48)	カウンター
+;var(49)	カウンター タイマー
+
+;var(58) AIの行動パターン
+;var(57) ブーメランhit判定
+
+[State -3,var1]
+type = VarSet
+trigger1 = ctrl = 1
+var(1) = 1
+
+[State -3,var3]
+type = VarSet
+triggerall = (NumHelper(1001) = 0) && (NumHelper(1002) = 0)
+trigger1 = (stateno = 1000) || (stateno = 1010)
+trigger1 = Time = 12
+var(3) = facing
+
+[State -3,var4]
+type = VarSet
+trigger1 = 1
+var(4) = IfElse((facing - var(3)),-1,1)
+
+[State -3,var5]
+type = VarSet
+trigger1 = (P2name = "FREEDOM -Meteor-")
+var(5) = 1
+
+[State -3,var4]
+type = VarSet
+trigger1 = (NumHelper(1001) = 0) && (NumHelper(1002) = 0)
+var(57) = 0
+
+;---------------------------------------------------------------------------
+;fvar(1) ブーメラン1001のx軸
+;fvar(2) ブーメラン1001のy軸
+;fvar(3) ブーメラン1001のx軸
+;fvar(4) ブーメラン1002のy軸
+
+[State -3,add9 現在値]
+type = VarAdd
+triggerall = stateno != [8100,9100]
+triggerall = StateType != A
+trigger1 = fvar(10) > fvar(9)
+fvar(9) = 2
+
+[State -3,add9 現在値]
+type = VarAdd
+triggerall = fvar(11) > 0
+trigger1 = stateno = [8100,9100]
+trigger2 = stateno = [1010,1011]
+trigger3 = stateno = [1030,1031]
+trigger4 = stateno = [630,631]
+fvar(9) = -1
+
+[State -3,set9 初期値]
+type = VarSet
+trigger1 = RoundState = 0
+fvar(9) = 285;428
+
+[State -3,set10 分母]
+type = VarSet
+trigger1 = 1
+fvar(10) = 285;428
+
+[State -3,set11 ゲージのx軸scale]
+type = VarSet
+;triggerall = fvar(11) > 0
+;trigger1 = stateno = [8100,9100]
+;trigger2 = stateno = [1010,1011]
+;trigger3 = stateno = [1030,1031]
+;trigger4 = stateno = [630,631]
+;trigger5 = fvar(11) > 0
+trigger1 = 1
+fvar(11) = fvar(9)/fvar(10)
+
+[State -3, debag]
+type = DisplayToClipboard
+trigger1 = 1
+text = "stateno = %d var(1) = %d var(16) = %d var(22) = %d var(23) = %d\n"
+params = stateno,var(1),var(16),var(22),var(23)
+
+;※※※※※※※※※※※※※※※※※※※※カウンター
+;理論を解説
+;立ちガードのステートは分けると「ガードする動作」「攻撃をガードした動作」「ガードを解く動作」となります
+;ちょうどステートが分割されてるなら「攻撃をガードした動作」の時にコマンドを入れたらそのステートに飛ぶことに
+;すればカウンターの完成です
+;ただそれだとちょっと簡単なので成功したら一瞬光ってとまり、技ゲージをちょっと減らすようにします。
+;今回はカンフー突き手の弱・強に対応させてます
+
+
+[State 10000, 11];←成功したとき一瞬無敵になる
+type = NotHitBy
+trigger1 = var(49) = 1
+value = SCA, NA, SA, HA, NP, SP, HP
+time = 10
+
+[State 4000,Spark];←成功したとき一瞬止まる
+type = Pause
+trigger1 = var(49) = 1
+time = 7
+pausemovetime = 7
+poweradd = -100
+
+[State 1300, 5];←成功したとき一瞬止まる、小さいけど効果的です
+type = Envcolor
+trigger1 = var(49) = 1
+persistent = 0
+ignorehitpause = 1
+value = 255, 255, 255
+time = 1
+under = 1
+supermove = 1
+
+;---------------------------------------------------------------------------
+;カウンター
+[State -3,成功]
+type = VarSet
+trigger1 = var(48) = StateNo
+var(49) = 1
+
+[State -3,成功]
+type = VarSet
+trigger1 = var(49) = 1
+var(49) = 2
+
+[State -3,var3]
+type = VarSet
+trigger1 = var(48) = 0
+var(49) = 0
+
+[State 1300, とりあえずクリア]
+type = VarSet
+trigger1 = stateno != [150,159]
+var(48) = 0
+

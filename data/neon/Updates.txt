@@ -1,0 +1,22 @@
+ScreenPack created by necro_rk for winmugen plus [mugen 1.0 soon]
+
+Updates
+***********************25/12/12**************************
+Added lifebar patch for litle errors
+Changed P1 & P2 startcell to first line
+Added 588 slot patch to neon.rar file
+Nchar_small.fnt file fixed (again)
+***********************21/12/10**************************
+fight.snd fixed, better volume added
+Nchar_small.fnt file fixed
+***********************18/12/10**************************
+ScreenPack released
+
+
+
+
+Please visit my blogs
+http://Rokksoftware.blogspot.com/
+
+and my dev
+http://necro-rk.deviantart.com/

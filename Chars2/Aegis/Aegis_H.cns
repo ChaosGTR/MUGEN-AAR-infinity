@@ -1,0 +1,68 @@
+
+;---------------------------------------------------------------------------
+; 管理
+[Statedef 10000]
+type    = U
+movetype= I
+physics = N
+anim = 4
+
+[State 1]
+type = NotHitBy
+trigger1 = 1
+value = CSA
+[State 1]
+type = VarSet
+trigger1 = root,ctrl
+var(0) = 1
+[State 1]
+type = VarSet
+trigger1 = roundState != 2
+var(0) = 0
+
+
+;---------------------------------------------------------------------------
+;コンボ長時間拘束つまんねキャンセラー
+[State -3,カウント中]
+type = VarAdd
+triggerAll = var(2) = 0
+trigger1 = root,MoveType = H
+trigger1 = root,ctrl = 0
+trigger1 = roundState = 2
+trigger1 = root,life > 0
+trigger1 = root,StateNo != [1110,1111]
+trigger1 = root,StateNo != [120,159]
+trigger1 = root,StateType != L
+var(1) = 1
+
+;コンボ長時間拘束つまんねキャンセラー
+[State -3,カウントリセット]
+type = VarSet
+trigger1 = root,MoveType != H
+trigger2 = root,ctrl = 1
+trigger3 = roundState > 2
+trigger4 = root,life = 0
+trigger5 = root,StateNo = [1110,1111]
+trigger6 = root,StateNo = [120,159]
+var(1) = 0
+
+;コンボ長時間拘束つまんねキャンセラー
+[State -3,カウント許可]
+type = VarSet
+triggerAll = var(2) = 1
+trigger1 = root,MoveType != H
+trigger1 = root,ctrl = 1
+trigger1 = roundState = 2
+trigger1 = root,life > 0
+trigger1 = root,StateNo != [1110,1111]
+trigger1 = root,StateNo != [120,159]
+trigger1 = root,StateType != L
+var(2) = 0
+
+;コンボ長時間拘束つまんねキャンセラー
+[State -3,カウント不許可]
+type = VarSet
+trigger1 = root,StateNo = [1110,1111]
+trigger2 = (root,ctrl=0 && root,MoveType=H && root,StateNo!=[5000,5999])
+trigger3 = root,StateType = L
+var(2) = 1

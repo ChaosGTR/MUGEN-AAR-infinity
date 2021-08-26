@@ -1,0 +1,537 @@
+[Statedef -3]
+
+
+
+; 着地の際の振動
+[State -3, 1]
+type = EnvShake
+triggerall = 0;
+triggerall = Time = 1
+trigger1 = stateno = 52 
+time = 6
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 40
+trigger2 = stateno = 8100
+value = 40, 1
+
+[State -3, Landing Sound]
+type = PlaySnd
+trigger1 = Time = 1
+trigger1 = stateno = 52
+value = 52, 0
+
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Gametime%(15) = 0
+trigger1 = stateno = [810,890]
+trigger2 = stateno = 100 || stateno = 105
+value = 8100, 0
+
+[State -3, 2]
+type = Turn
+trigger1 = P2Dist X < 0
+;trigger1 = time = 10
+trigger1 = (stateno = 47) || (stateno = 51) || (stateno = 8300) || (stateno = 3031)
+
+
+;---------------------------------------------------------------------------
+;種割れ後のあふたーいめーじ
+[State -2, Super D]
+type = AfterImage
+triggerall = var(58) != 0
+trigger1 = Time = 0
+trans = add1
+TimeGap  = 1
+FrameGap = 5
+time = 9999
+length = 15;150
+PalBright   =   0,  0,  0
+;PalContrast = 128,128,128
+PalContrast = 150,0,120
+PalAdd      =   0,  0,  0
+PalMul      =  1,1,1;.9, .9, .9
+trans = add1
+
+
+[State -2, Super D]
+type = AfterImage
+triggerall = var(58) != 0
+trigger1 = MoveType = H
+trigger2 = var(5) = 99
+time = 0
+
+;---------------------------------------------------------------------------
+;相手が誰？フラグ
+[State -3,敵がキラ]
+type = VarSet
+trigger1 = p2name = "freedom -meteor-" || p4name = "freedom -meteor-"
+trigger2 = p2name = "strike" || p4name = "strike"
+var(56) = 1
+
+[State -3,味方がキラ]
+type = VarSet
+trigger1 = p2name = "free_meteor" || p4name = "free_meteor"
+var(55) = 1
+
+;---------------------------------------------------------------------------
+;PS
+;---------------------------------------------------------------------------
+[State 190,01]
+type = Palfx
+trigger1 = StateNo = 0
+trigger1 = Ctrl = 0
+add = 0,0,0
+time = 1
+color = 256
+
+;---------------------------------------------------------------------------
+;自爆リセット
+;---------------------------------------------------------------------------
+[State 190,01]
+type = VarSet
+trigger1 = Ctrl
+var(5) = 0
+
+;---------------------------------------------------------------------------
+;フェア・ウォーニング ctrl
+;---------------------------------------------------------------------------
+[State 3000, 7]
+type = VarSet
+trigger1 = StateNo = 3000
+var(6) = 1
+
+;AI用 SEED直後
+[State -3, AI用]
+type = VarSet
+trigger1 = MoveType = H
+trigger2 = ctrl
+var(6) = 0
+
+;---------------------------------------------------------------------------
+;シールド回数
+[State -3,]
+type = VarSet
+trigger1 = StateType != A
+trigger1 = Ctrl
+trigger1 = NumHelper(11140) = 0
+var(9) = 1
+
+;---------------------------------------------------------------------------
+;ダッシュボタン
+[State -3,var31]
+type = VarSet
+triggerAll = var(59) = 0
+triggerAll = StateNo!=[5000,5999]
+trigger1 = Command = "holdR"
+trigger2 = Command = "FF"
+trigger3 = Command = "BB"
+trigger4 = Command = "UU"
+trigger5 = Command = "DD"
+var(14) = 1
+
+;ダッシュボタン
+[State -3,var32]
+type = VarSet
+triggerAll = var(59) = 0
+trigger1 = Command != "holdR"
+trigger1 = Command != "holdfwd"
+trigger1 = Command != "holdback"
+trigger1 = Command != "holdup"
+trigger1 = Command != "holddown"
+var(14) = 0
+
+;ダッシュボタン
+[State -3,var33]
+type = VarSet
+trigger1 = StateNo=[5000,5999]
+trigger2 = fvar(11) <= 0
+trigger3 = MoveType = H
+var(14) = 0
+
+[State -3,var34]
+type = VarSet
+triggerAll = var(59) = 1
+triggerAll = (StateNo=100)||(StateNo=105)||(StateNo=[810,890])
+triggerAll = Time = 1
+trigger1 = 1
+var(14) = 1
+
+;---------------------------------------------------------------------------
+;スラスター表示
+[State -3,var3]
+type = VarSet
+triggerAll = MoveType != H
+triggerAll = StateType = A
+trigger1 = StateNo = [810,890]
+trigger2 = StateNo = 1000
+trigger2 = StateType = A
+var(15) = 1
+
+;スラスター非表示
+[State -3,var3]
+type = VarSet
+trigger1 = StateNo != [810,890]
+trigger1 = StateNo != 1000
+trigger2 = MoveType = H
+trigger3 = StateType != A
+var(15) = 0
+ignorehitpause = 1
+
+
+[State 200,スラスター]
+type = helper
+triggerAll = NumHelper(10820) = 0
+trigger1 = var(15) = 1
+name = "10820"
+id = 10820
+pos = 0, 0
+postype = p1
+stateno = 10820
+helpertype = normal
+ownpal = 1
+keyctrl = 0
+
+;---------------------------------------------------------------------------
+;フライング防止
+[State -3,]
+type = VarSet
+trigger1 = roundState=2&&ctrl
+var(53) = 1
+
+[State -3,]
+type = VarSet
+trigger1 = roundState != 2
+var(53) = 0
+
+;---------------------------------------------------------------------------
+;AI用
+;---------------------------------------------------------------------------
+;AI用 SEED直後
+[State 3000, 7]
+type = VarSet
+trigger1 = StateNo = 900
+trigger1 = AnimTime = -1
+var(30) = 100
+
+;AI用 SEED直後
+[State -3, AI用]
+type = VarAdd
+trigger1 = var(6) > 0
+var(30) = -1
+
+;---------------------------------------------------------------------------
+;AI_600
+[State 3000, 7]
+type = VarSet
+triggerAll = var(31) = 0
+trigger1 = StateNo = 600
+trigger1 = MoveHit = 1
+var(31) = 24
+
+[State -3, AI用]
+type = VarAdd
+trigger1 = var(31) > 0
+var(31) = -1
+
+[State -3, AI用]
+type = VarSet
+trigger1 = MoveType = H
+trigger2 = StateNo=400
+var(31) = 0
+
+;---------------------------------------------------------------------------
+;AI_1030
+[State 3000, 7]
+type = VarSet
+triggerAll = var(32) = 0
+trigger1 = ProjHit1030 = 1,<=30
+var(32) = -1
+
+[State 3000, 7]
+type = VarSet
+triggerAll = var(32) = -1
+trigger1 = StateNo = 1043
+trigger1 = AnimTime = 0
+var(32) = 10
+
+[State -3, AI用]
+type = VarAdd
+trigger1 = var(32) > 0
+var(32) = -1
+
+[State -3, AI用]
+type = VarSet
+trigger1 = StateType != A
+trigger2 = MoveType = H
+trigger3 = StateNo=[1041,1042]
+var(32) = 0
+
+;---------------------------------------------------------------------------
+;AI_610
+[State 3000, 7]
+type = VarSet
+triggerAll = var(33) = 0
+trigger1 = StateNo = 610
+trigger1 = MoveHit = 1
+var(33) = 24
+
+[State -3, AI用]
+type = VarAdd
+trigger1 = var(33) > 0
+var(33) = -1
+
+[State -3, AI用]
+type = VarSet
+trigger1 = MoveType = H
+trigger2 = StateNo=400
+var(33) = 0
+
+;---------------------------------------------------------------------------
+;AI_610
+[State 3000, 7]
+type = VarSet
+triggerAll = var(34) = 0
+trigger1 = StateNo = 311
+trigger1 = MoveHit = 1
+var(34) = 54
+
+[State -3, AI用]
+type = VarAdd
+trigger1 = var(34) > 0
+var(34) = -1
+
+[State -3, AI用]
+type = VarSet
+trigger1 = MoveType = H
+var(34) = 0
+
+
+
+
+
+;---------------------------------------------------------------------------
+;var(1) ビームサーベル乱舞、MA突進　ループ回数
+;var(2) MA突進　hit管理
+;var(3) MA突進　Anim管理
+;var(4) 至近距離スキュラ回数
+;var(5) フェア・ウォーニング 画面端フラグ
+　　　　自爆_処理フラグ
+;var(6) フェア・ウォーニング ctrl
+;var(7) 自爆カウンタ
+;var(8) PSカウンタ
+;var(9) シールド回数
+
+
+;var(14) スラスタースイッチ 0=OFF 1=ON
+;var(15) 	スラスター表示Flg
+
+;var(30) AI用 SEED直後　カウンタ
+;var(31) AI用 コンボ用600　カウンタ
+;var(32) AI用 コンボ用1030　カウンタ
+;var(33) AI用 コンボ用610　カウンタ
+;var(34) AI用 コンボ用311　カウンタ
+
+
+;var(48)	カウンター
+;var(49)	カウンター タイマー
+
+;var(55) 味方専用イベント用　特になし
+;			1=キラ
+;var(56) 敵専用イベント用
+;			1=キラ
+;var(57) イントロ　0=ニコル,1=ハイネ,2=ミゲル,3=ラスティ,4=キラ
+;var(58) SEED覚醒
+
+
+
+;fvar(4)	AI用 相手の方角
+
+;fvar(9)	スラスター
+;fvar(10)	スラスター
+;fvar(11)	スラスター
+
+
+;---------------------------------------------------------------------------
+;fvar(1) ブーメラン1001のx軸
+;fvar(2) ブーメラン1001のy軸
+;fvar(3) ブーメラン1001のx軸
+;fvar(4) ブーメラン1002のy軸
+
+[State -3,add9 現在値]
+type = VarAdd
+triggerall = stateno != [810,890]
+triggerall = StateType != A
+trigger1 = fvar(10) > fvar(9)
+fvar(9) = 2
+
+[State -3,add9 現在値]
+type = VarAdd
+triggerall = fvar(11) > 0
+trigger1 = stateno = [810,890]
+trigger2 = stateno = 1000
+trigger2 = stateType = A
+trigger3 = stateno = 1030
+trigger4 = stateno = [630,631]
+trigger5 = stateno = [1040,1042]
+fvar(9) = -1
+
+
+[State -3,add9 現在値]
+type = VarAdd
+triggerall = fvar(11) > 0
+trigger1 = stateno = 1030
+trigger2 = stateno = [1040,1042]
+fvar(9) = -2
+
+
+[State -3,set9 初期値]
+type = VarSet
+trigger1 = RoundState = 0
+fvar(9) = 285;428
+
+[State -3,set10 分母]
+type = VarSet
+trigger1 = 1
+fvar(10) = 285;428
+
+[State -3,set11 ゲージのx軸scale]
+type = VarSet
+trigger1 = 1
+fvar(11) = fvar(9)/fvar(10)
+
+[State -3, debag]
+type = DisplayToClipboard
+trigger1 = 1
+text = "v55 = %d v56 = %d p2X = %2f front = %2d var(23) = %d\n"
+params = var(55),var(56),P2bodyDist X,FrontEdgeBodyDist,var(23)
+
+;※※※※※※※※※※※※※※※※※※※※カウンター
+;理論を解説
+;立ちガードのステートは分けると「ガードする動作」「攻撃をガードした動作」「ガードを解く動作」となります
+;ちょうどステートが分割されてるなら「攻撃をガードした動作」の時にコマンドを入れたらそのステートに飛ぶことに
+;すればカウンターの完成です
+;ただそれだとちょっと簡単なので成功したら一瞬光ってとまり、技ゲージをちょっと減らすようにします。
+;今回はカンフー突き手の弱・強に対応させてます
+
+
+[State 10000, 11];←成功したとき一瞬無敵になる
+type = NotHitBy
+trigger1 = var(49) = 1
+value = SCA, NA, SA, HA, NP, SP, HP
+time = 10
+
+[State 4000,Spark];←成功したとき一瞬止まる
+type = Pause
+trigger1 = var(49) = 1
+time = 7
+pausemovetime = 7
+poweradd = -100
+
+[State 1300, 5];←成功したとき一瞬止まる、小さいけど効果的です
+type = Envcolor
+trigger1 = var(49) = 1
+persistent = 0
+ignorehitpause = 1
+value = 255, 255, 255
+time = 1
+under = 1
+supermove = 1
+
+;---------------------------------------------------------------------------
+;カウンター
+[State -3,成功]
+type = VarSet
+trigger1 = var(48) = StateNo
+var(49) = 1
+
+[State -3,成功]
+type = VarSet
+trigger1 = var(49) = 1
+var(49) = 2
+
+[State -3,var3]
+type = VarSet
+trigger1 = var(48) = 0
+var(49) = 0
+
+[State 1300, とりあえずクリア]
+type = VarSet
+trigger1 = stateno != [150,159]
+var(48) = 0
+
+
+[State PlaySnd]
+type = PlaySnd
+trigger1 = var(49) = 1
+value = 905,random%2
+channel = 0
+ignorehitpause = 1
+
+
+;---------------------------------------------------------------------------
+;AI用 
+;---------------------------------------------------------------------------
+;相手の方角
+[State -3,]
+type = VarSet
+trigger1 = gameTime%2=0
+fvar(14) = fvar(4)
+
+;---------------------------------------------------------------------------
+;相手の方角
+[State -3,]
+type = VarSet
+trigger1 = p2bodyDist Y != [-5,5]
+fvar(4) = atan((-1*(P2BodyDist Y)/(P2BodyDist X)))*180/pi +(ifelse(random%2=0,-1,1)*random%10)
+
+[State -3,目標]
+type = VarSet
+trigger1 = p2bodyDist Y =[-5,5]
+fvar(4) = 0
+
+;---------------------------------------------------------------------------
+;スラスター
+;---------------------------------------------------------------------------
+[State -3, スラスターOFF]
+type = VarSet
+triggerAll = var(59) = 1
+triggerAll = stateno = [810,890]
+triggerAll = var(14) = 1
+trigger1 = P2BodyDist X < 80
+var(14) = 2
+
+
+;---------------------------------------------------------------------------
+;ダッシュボタン
+[State -3,var3]
+type = VarSet
+triggerAll = var(59) = 1
+triggerAll = StateNo!=[5000,5999]
+trigger1 = gameTime%60 = 0
+trigger1 = random%10 = [0,3]
+trigger2 = gameTime%10 = 0
+trigger2 = EnemyNear,MoveType = A
+trigger2 = InGuardDist
+trigger3 = (gameTime%30=0)&&(random%3=0)
+trigger3 = P2BodyDist X > 130
+trigger4 = (P2BodyDist X < 0) && (facing=EnemyNear,facing)
+var(14) = 1
+
+;ダッシュボタン
+[State -3,var3]
+type = VarSet
+triggerAll = var(59) = 1
+triggerAll = (P2BodyDist X > 0) || (facing!=EnemyNear,facing)
+trigger1 = gameTime%60 = 0
+trigger1 = random%10 = [4,9]
+var(14) = 0
+
+
+;ダッシュボタン
+[State -3,var3]
+type = VarSet
+trigger1 = var(59) = 2
+var(14) = 0

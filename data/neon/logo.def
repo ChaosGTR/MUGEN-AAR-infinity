@@ -1,0 +1,43 @@
+[SceneDef]
+spr = logo.sff
+
+;------------------------------------
+[Scene 0]
+; Fade
+fadein.time = 30
+fadeout.time = 60
+; Screen color
+clearcolor = 0,0,0
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0 ;Default position for all layers
+layer0.anim =  0       ;Anim action number
+; Total time
+end.time = 210
+
+
+
+;------------------------------------
+;Animation for logo
+[Begin Action 0];logo
+2,0, 0,0, 2,,AS18D256
+2,0, 0,0, 2,,AS38D256
+2,0, 0,0, 2,,AS58D256
+2,0, 0,0, 2,,AS78D256
+2,0, 0,0, 2,,AS98D256
+2,0, 0,0, 2,,AS108D256
+2,0, 0,0, 2,,AS128D256
+2,0, 0,0, 30,,A
+2,0, 0,0, 2,,AS128D256
+2,0, 0,0, 2,,A
+2,0, 0,0, 2,,AS128D256
+2,0, 0,0, 30,,A
+2,0, 0,0, 2,,AS128D256
+2,0, 0,0, 2,,A
+2,0, 0,0, 2,,AS128D256
+2,0, 0,0, 30,,A
+2,1, 0,0, 2,,A
+2,2, 0,0, 2,,A
+2,3, 0,0, 2,,A
+2,4, 0,0, 2,,A
+2,5, 0,0, 2,,A
+2,6, 0,0, -1,,A

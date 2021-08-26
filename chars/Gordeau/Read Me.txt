@@ -1,0 +1,296 @@
+==========================================================================================
+Gordeau
+From Under Night In-Birth / Blazblue Cross Tag Battle
+Version 1.13
+For M.U.G.E.N 1.0 and above
+==========================================================================================
+
+==========================================================================================
+Note
+==========================================================================================
+This character was made with only single and turns mode in mind, so using this in simul mode is probably not a good idea.
+==========================================================================================
+
+==========================================================================================
+Change log
+==========================================================================================
+08/22/2021 - 1.13
+-New Mechanic: Not Over Yet
+  -Upon reaching 35% health or below and not being in a hurt state, you will receive the following benefits for the rest of the round:
+   +All Distortion Drives deal 20% more damage (Stacks with Ultra Burst's damage buff)
+   +Immediately Gain 500 Meter
+   +Slowly gain meter overtime
+   +Gain a defense buff that scales up to 35% according to how much health you currently have (Less health means more defense)
+  -Only triggers once per round
+-New Mechanic: Ultra Dead Angle (Burst while Guarding)
+  -Using this will cancel your guard stun and make you invulnerable for ten frames after the super pause. This also puts you into the Ultra Burst state, but it will only last a third of the time it would if you were to Ultra Burst normally.
+-Ground throw now has 5 frames of startup, Dash Grab now has 3 frames of startup
+-Stationary, Forward, and air dodges now have less invul time against physical attacks
+-Invul time upon air recovery lasts a little longer and control is regained a little sooner
+-Directional inputs now have more influence over air recovery
+-Distortion Drives can now be triggered with any combination of A, B, and C rather than just A+B (Example: QCF B+C, QCB A+C)
+-Changed default Liedown time to 15 frames
+-A red X now appears over the Burst Icon when in a situation where it is not usable
+-Added an Invalid Combo Indicator
+-General Aesthetic Changes
+
+00/00/2021 - 1.1221
+- Fixed "sound does not exist" debug errors in IKEMEN GO
+- Fixed visual bugs that occur during Ultra Burst in IKEMEN GO
+
+01/28/2021 - 1.122
+- Fixed an error where the opponent would be misaligned for one frame upon grabbing as player 2
+
+12/22/2020 - 1.121
+- Fixed typos in winquotes
+
+12/20/2020 - 1.12
+- Fixed an error where Assimilation could be rapid canceled at the exact moment the opponent is first grabbed
+- Fixed an error where the flame effect from EX Assimilation would follow Gordeau after rapid canceling
+
+12/10/2020 - 1.11
+- Holding up since the first jump will no longer trigger an air jump
+- Fixed an error where certain effects shared Gordeau's Palfx
+- Mortal Slide Divest can now only be rapid canceled on the last hit or the first two hits if they were blocked
+- Fixed an error where the Japanese was set to default despite not being included in the main folder
+
+11/07/2020 - 1.1
+- Fixed all Hitdefs so they may properly interact with reversal defs
+- Fixed turn to face behavior during normal burst
+- Added Special intro against Yukiko Amagi
+- Japanese voice has also been updated for the new special intro
+
+11/00/2020 - 1.1
+- Fixed all Hitdefs so they may properly interact with reversal defs
+- Fixed turn to face behavior during normal burst
+- Added Special intro against Yukiko Amagi
+- Japanese voice has also been updated for the new special intro
+
+09/27/2020 - 1.09
+- Reduced active frames and adjusted hitbox on air throw attempt.
+- Fixed an error where air dodge's remaining invul frames would linger upon landing
+
+08/16/2020 - 1.08
+- Fixed an error in the incremental cornerpush system
+- All versions of Assimilation are now immune to throws up until the last active frame
+- Adjusted A Assimilation's launch trajectory
+- Adjusted Hitboxes for the 5A autocombo series, 5BB, and 2A so they can hit smaller characters more consistently
+- Running A is now special cancelable
+- Additional effect for the last hit of both Distortion Drives
+- Fixed an error where 2 shockwave effects would appear at once when the opponent lands during one of the custom states
+- Adjusted transparency on the propeller effect
+- The Ultra Burst aura will no longer show up during custom states
+
+11/09/2019 - 1.07
+- New system mechanic: Ultra Burst. Burst can now be used in a neutral state, and doing so will put Gordeau in a powered up state that gives the following benefits:
+ +Health and Meter will gradually recover overtime (Unless you're taking damage)
+ +Damage output will be increased by 20%
+ +Timer will be frozen
+ +Hitting the opponent with the Ultra Burst will launch them upward and will be unable to recover from it
+ +Hitting the opponent with the ultra burst will also grant 500 meter instantly
+The time that the Ultra Burst state will last is proportionate to the amount of health lost prior to activating, Attempting an astral heat will immediately end the Ultra Burst state
+- Implemented throw escape system, the opponent can now escape Gordeau's normal throws by inputting A+B, B+C, X+Y, or Z within 14 frames after being grabbed. However, throws are inescapable on counterhit
+- New Burst icon
+- New astral heat BG
+- New Slash effect for last hit of soul exodus
+- The kick during Soul exodus now causes the opponent to wall bounce first before being launched into the air.
+- Revised Burst System
+- Replaced slash sound for last hit of Turbulence and Mortal Slide: Divest
+- Gordeau now makes use of custom fall states, bypassing fall.defence_up
+- Expanded Soul Exodus' hitbox downward
+- Aerial Aim now ends with a ground slam on hit, just like the B version of Precise Aim
+- Adjusted animation for 5B, Hitbox now comes out at animelem 8 instead of animelem 7
+- Added Ground Shatter effects for 5B and Precise/Aerial Aim's Ground Slam
+- Added ground slide effects to Grim Reaper
+- Adjusted swish effect for jB to better match the hitbox
+- jC now slows down Gordeau's horizontal momentum as opposed to halting it. 
+- Burning effect is now properly aligned on opponents who are in a liedown state
+- Added Special Intros against Yu Narukami and Carmine
+- Japanese voice now uses Gordeau's voice clips from BBTAG
+- For the sake of lowering the file size, the Japanese voice is now a separate download, which is available here:
+https://drive.google.com/file/d/1lNwvIjaaglNinFp7cAYnGKiV302gmH7_/view?usp=sharing
+
+05/30/2019 - 1.055
+- After a successful Burst, none of Gordeau's attacks will connect until the opponent has recovered
+- Fixed an error where Gordeau could Rapid Cancel his Burst
+- Fixed an error where Grim Reaper and Turbulence can hit the opponent out of recovery before they get the chance to block
+
+05/09/2019 - 1.05
+- All attacks now deal extra damage on counter hit
+- Implemented incremental cornerpush and hitstun decay
+- Running grab can now be cancled into Turbulence as soon as Gordeau releases the opponent
+- Increased cool down time on Grim Reaper and Turbulence
+- Fixed the slash sounds during air grab
+- Fixed an issue where the hitsparks would show up behind the opponent during Soul Exodus/Soul Vanish
+- Added AI
+
+01/26/2019 - 1.041
+- If Gordeau uses EX Assimilation again before a certain amount of time after the opponent has recovered from the first use, it will result in the opponent falling to the floor
+- Fixed an error where EX Assimilation can grab aerial opponents that are in guard stun
+
+01/23/2019 - 1.04
+- Added Special intro with Wagner
+- Adjusted Gordeau's hurtbox during 5B
+- Reduced the speed the opponent moves back while staggering after EX assimilation
+- Gordeau no longer has invul frames during the A version of Precise Aim/Aim Opening
+- Fixed the Truncation during Turbulence
+- Fixed a bug where Gordeau could potentially chain into his normal grab with precise timing 
+- Made some adjustments to the burst
+- Gordeau now makes use of Nep Heart's Burst code, which means that he can now burst during custom states, but not while being thrown or being hit with a Super/Distortion Drive
+- New slash sound effects (from Guilty Gear Xrd)
+- Included Mister Fael's Japanese voice, which has also been updated
+
+11/12/2018 - 1.035
+- Adjusted the launch trajectory on aerial aim, also the opponent can now recover from it sooner
+- Adjusted the launch trajectory on 66B when used a second time in the same combo
+- Made some slight adjustments to jA
+
+11/9/2018 - 1.03
+- Increased the cooldown time on EX assimilation
+- If EX assimilation is used again in the same combo, the opponent will fall to the floor instead of staggering, ending the combo
+- The opponent can now recover from grim reaper sooner
+- Made some more adjustments to jA and JB, making air combos easier to pull off
+
+11/4/2018 - 1.021
+- Fixed an error where Gordeau didn't have hitboxes during his air dodge
+
+11/1/2018 - 1.02
+- 5AAAA (Rusty Nail) now counts as 3 hits instead of 1
+- 2A can now only chain into itself up to 3 times
+- Made some slight adjustments to jA and jB
+- Adjusted the launch trajectory on 5BB (Mortal Slide) and jC (Mortal Glide)
+- Increased the cornerpush on EX Assimilation
+
+10/31/2018 - 1.01
+- Increased the size of the swish effect for 2B, The hitbox has also been adjusted accordingly
+- The color of the swish effects now change to match the current palette
+- EX Assimilation now regains some meter like it does in Uniel and Cross Tag
+- Adjusted the falling speed after using jC/Mortal Glide
+- Made a slight change to Assimilation's animation
+- Assimilation no longer has OTG properties
+- Added Flame effects to the Air Grab, All versions of Assimilation, and the Fourth hit of Mortal Slide: Divest
+- Adjusted the normal throw so it can be followed up with 5A more consistently
+
+10/31/2018 - 1.00
+- First Release
+==========================================================================================
+
+==========================================================================================
+To do list
+==========================================================================================
+- Fix bugs and errors that I might have missed
+==========================================================================================
+
+==========================================================================================
+Introduction
+==========================================================================================
+This Gordeau uses a custom gameplay style. Though he's not source accurate, he still plays similarly to how he does in Cross Tag while having new stuff and a couple of things that he had in Uniel. This read me will explain how this gameplay style works. His move list can be found in the .png included in this folder. 
+==========================================================================================
+
+==========================================================================================
+Default Button Layout
+==========================================================================================
+A, B, and C: Attack Buttons
+
+X: Rapid Cancel
+
+Y: Dodge
+
+Z: Grab
+==========================================================================================
+
+==========================================================================================
+Gameplay Mechanics
+==========================================================================================
+------------------------------------------------------------------------------------------
+Double Jump (Tap Up in the air)
+------------------------------------------------------------------------------------------
+Pretty self explanatory, allows you to jump a second time in the air. Can be canceled into after connecting any of your air normals. Can only be used once in the air, can't be used if you have already air dashed.
+
+------------------------------------------------------------------------------------------
+Air Dash (Double Tap Forward/Back while in the air)
+------------------------------------------------------------------------------------------
+Sends you flying forward or back for a set distance. Can be canceled into after connecting any of your air normals. Can only be used once in the air, can't be used if you have already double jumped.
+
+------------------------------------------------------------------------------------------
+Dodge (Y)
+------------------------------------------------------------------------------------------
+For a very short amount of time, you'll become invulnerable and can pass through the opponent and their projectiles. Just pressing Y will keep you stationary, pressing Y and forward at the same time will have you move forward a short distance, and pressing Y and back will have you back dash. The stationary dodge can also be done in the air. You will become vulnerable again near the end of the dodge animation, so be carful about how you time it.
+
+------------------------------------------------------------------------------------------
+Grab (Z)
+------------------------------------------------------------------------------------------
+Once again, pretty self explanatory. Overrides the opponent's guard, but only works if they're not in the air and not in a hit state
+
+------------------------------------------------------------------------------------------
+Air Grab (Z in the air)
+------------------------------------------------------------------------------------------
+Inversely, only works on airborne opponents and can work even when they're in a hit state. Can be used as a combo ender.
+
+------------------------------------------------------------------------------------------
+Running Grab (Z While Running)
+------------------------------------------------------------------------------------------
+Works on airborne opponents and standing opponents even when they're in a hit state. However, it won't work on crouching opponents.
+
+------------------------------------------------------------------------------------------
+Rapid Cancel (X When your attack has made contact with the opponent) (Costs 1000 meter) (Costs 500 meter if used during a Distortion Drive)
+------------------------------------------------------------------------------------------
+Using this will immediately put you in a neutral state, this can be used to extend combos, make otherwise unsafe moves safe, or make you more unpredictable to your opponent. Holding Forward or back while inputing the command will immediately have you run or back dash respectively (Air Dash Forward/Back when in the air), Holding up will immediately make you jump, and holding down while in the air will quickly bring you back to the ground.
+
+------------------------------------------------------------------------------------------
+Dead Angle Attack (Press Forward and X or Forward and B+C While guarding) (Costs 1000 meter)
+------------------------------------------------------------------------------------------
+Cancels your guard animation into an invulnerable attack animation that sends the opponent flying backward. Deals damage, but doesn't kill.
+
+------------------------------------------------------------------------------------------
+Burst (y+z while getting hit) (Can only be used once per round) (Doesn't work if you're being thrown or being hit by a super)
+------------------------------------------------------------------------------------------
+Deploys a non damaging blast around your character that sends you opponent flying away from you. A poorly timed burst can leave open for even more damage, so be carful.
+
+------------------------------------------------------------------------------------------
+Wake up Action
+------------------------------------------------------------------------------------------
+The wake up animation can be canceled into a forward dodge or a back dash. In Gordeaus's case, he can aslo cancel into Percise Aim.
+
+==========================================================================================
+
+==========================================================================================
+Character Specific Mechanics
+==========================================================================================
+------------------------------------------------------------------------------------------
+Snatcher
+------------------------------------------------------------------------------------------
+The following attacks will drain the opponent's meter on hit:
+
+-5AAAA
+-Air Grab
+-All versions of Assimilation
+-4th hit of Mortal Slide: Divest
+
+------------------------------------------------------------------------------------------
+Reverse Beat
+------------------------------------------------------------------------------------------
+Gordeau can chain his normal attacks in any given order, assuming that the attack hasn't already been used in the same chain.
+For instance, Gordeau can make a chain that goes like this:
+
+2C > 5A > 5B > 2B
+
+However, he CANNOT make a chain that goes like this:
+
+5B > 5A > 5B > 5A
+
+==========================================================================================
+
+==========================================================================================
+Thanks to:
+- CozySquirtle, for teaching me how to make small ports like he does
+- aokmaniac for ripping the sprites
+- Takehaya Susanoo for providing Gordeau's voice clips from Cross Tag
+- Ricepigeon for his damage scaling system
+- Mister Fael Chan, Nep Heart, and ZolidSone for testing
+- Dustloop Wiki and Mizuumi Wiki for the data on Gordeau's moves
+- Elecbyte and Mugen Guild, for their very helpful references and documentation on how the Mugen code works
+- Mugen Guild again for providing feedback for my characters
+- You, for checking this character out, Have fun
+==========================================================================================
+

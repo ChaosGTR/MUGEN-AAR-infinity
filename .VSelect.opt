@@ -1,0 +1,12 @@
+charcol.3 = 0
+vselect.version = 1.3.10.2
+startup.load = 1
+opt.tooltips = 1
+opt.dropmode = 0
+opt.alwaysbackup = 1
+mugen.exe = C:\Users\16507\Downloads\Ikemen_GO_v0_97_0\Ikemen_GO_x86.exe
+mugen.hires = 0
+opt.width = 691
+opt.height = 600
+opt.top = 220
+opt.left = 614

@@ -1,0 +1,17 @@
+{
+  "modes":{
+    "training":{
+      "playtime":0
+    },
+    "freebattle":{
+      "playtime":2785.21
+    },
+    "watch":{
+      "playtime":0
+    },
+    "versus":{
+      "playtime":0
+    }
+  },
+  "playtime":2785.21
+}

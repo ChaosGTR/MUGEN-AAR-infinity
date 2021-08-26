@@ -1,0 +1,23 @@
+[Info]
+name="Rin"
+DisplayName="Rin"
+author ="Nanda"
+pal.defaults =1
+versiondate=2014-06-14
+mugenversion=1.0
+
+[Files]
+cmd =rin.cmd
+cns =rin.cns
+st =rin.cns
+stcommon =common1.cns
+sprite =rin.sff
+anim =rin.air
+sound =rin_kagamine.snd
+pal1=rin.act
+st1=rin_st.cns
+st2=rin_n.cns
+st3=-2-3.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard=

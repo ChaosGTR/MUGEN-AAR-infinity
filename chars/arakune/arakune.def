@@ -1,0 +1,37 @@
+[Info]
+name = "Arakune"
+displayname = "Arakune"
+versiondate = 05,21,2005
+mugenversion = 04,14,2002
+author = "muteki,jose bg" 
+pal.defaults = 1
+
+[Files]
+cmd     = arakune.cmd
+cns     = arakune_const.txt
+st      = arakune.cns
+st1     = arakune_EX.cns
+st2     = insects.cns
+st3     = AI.txt
+stcommon = common1.cns
+sprite  = arakune.sff
+anim    = arakune.air
+sound   = arakune.snd
+pal1    = arakune01.act
+pal2    = arakune02.act
+pal3    = arakune03.act
+pal4    = arakune04.act
+pal5    = arakune05.act
+pal6    = arakune06.act
+pal7    = arakune07.act
+pal8    = arakune08.act
+pal9    = arakune09.act
+pal10   = arakune10.act
+pal11   = arakune11.act
+pal12   = arakune12.act
+
+
+; Arcade mode
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

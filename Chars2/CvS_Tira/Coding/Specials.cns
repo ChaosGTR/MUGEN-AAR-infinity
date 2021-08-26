@@ -1,0 +1,261 @@
+;========================<KUNG FU PALM>=======================
+[Statedef 1000]
+type = S
+movetype = A
+physics = S
+anim = 1000
+ctrl = 0
+velset = 0,0
+poweradd = 70 * !var(20)
+sprpriority = 2
+facep2 = 1
+
+[State 105, Dust Helper]
+type = Helper
+trigger1 = AnimElem = 6
+helperType = Normal
+stateNo = 8103
+ID = 8100
+name = "Dash Dust"
+posType = P1
+facing = 1
+pauseMoveTime = 255
+superMoveTime = 255
+ownPal = 1
+
+[State 1000, Voice]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 0,11
+channel = 0
+
+[State 1000, Swing Snd]
+type = PlaySnd
+trigger1 = Animelem = 5
+value = 1,2
+
+[State 212, Vel]
+type=velset
+trigger1= animelemtime(5)>=0 && animelemtime(9)<=0
+x=3.6
+
+[State 212, Vel]
+type=velset
+trigger1= animelemtime(10)>=0
+x=0
+
+[State 3000, Final Hit]
+type = HitDef
+trigger1 = !var(16) && var(15) < 4
+trigger1 = AnimElem = 6
+attr = S, HA
+damage = ceil(ifElse(fvar(11) * 70 < 7, 7, fvar(11) * 70)), 12
+priority = 4, hit
+animtype = Hard
+getpower = 0, 0
+givepower = 35, 35
+guardflag = MA
+hitflag = MAF
+hitsound = S2,2
+guardsound = S130,0
+pausetime = 12,12
+guard.pausetime = 12,12
+sparkNo = -1 + 0 * (var(33) := 8013)
+guard.sparkNo = -1 + 0 * (var(34) := 8001)
+sparkXY = -10 + 0 * (var(35) := 100), var(36) := -81
+air.animtype = Back
+fall.animtype = Back
+ground.type = Low
+air.type = Low
+ground.slidetime = 18
+ground.hittime  = 18
+guard.hittime = 18
+ground.velocity = -7, -7.5
+air.velocity = -7,-7
+guard.velocity = -12
+airguard.velocity = -8, -3
+airguard.ctrlTime = 16
+ground.cornerPush.velOff = 0
+guard.cornerPush.velOff = 0
+air.cornerPush.velOff = 0
+yaccel = .58
+fall = 1
+fall.recover = 0
+forcestand = 1
+palFX.time = 12 * var(9)
+palFX.add = 255,255,255
+palFX.sinAdd= -255,-255,-255,48
+envshake.time = 14
+envshake.ampl = 4
+envShake.freq = 120
+
+[State 1000, StateTypeSet: Idle]
+type = StateTypeSet
+trigger1 = AnimElemTime(7) >= 0
+movetype = I
+
+[State 1000, End]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+
+;========================<KUNG FU PALM>=======================
+[Statedef 1100]
+type    = C
+movetype= A
+physics = C
+poweradd = 70 * !var(20)
+ctrl = 0
+velset = 0,0
+anim = 1100
+sprpriority = 2
+facep2=1
+
+[State 400, Voice]
+type=playsnd
+trigger1= animelem=1 && random<350
+value= 0,10
+channel=0
+
+[State 400, Swing Snd]
+type=playsnd
+trigger1= animelem=1
+value=1,0
+channel=1
+
+[State 400, HitDef]
+type = HitDef
+trigger1 = !var(16) && var(15) < 1
+trigger1 = !Time
+attr = C,NA        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+guardflag = M         ;HLA
+ID = 200
+getpower = 10 * !var(20), 0
+givepower = 30,30
+animtype = Light          ;light,medium,hard,back,up,diagup
+priority = 4,Hit   ;Hit,Miss,Dodge
+damage = ceil(ifElse(fvar(11) * 26 < 7, 7, fvar(11) * 26)), 0
+pausetime = 8,8
+guard.pausetime = 8,8
+sparkNo = -1 + 0 * (var(33) := 8013)
+guard.sparkNo = -1 + 0 * (var(34) := 8001)
+sparkXY = -10 + 0 * (var(35) := 80), var(36):=-34
+hitsound = s2,11
+guardsound = s130,1
+air.animType = Back
+fall.animType = Back
+ground.type = Low      ;Low,Trip,None
+air.type = Low
+ground.slidetime = 12 + 2*var(9)
+ground.hittime = 18 + 2*var(9)
+guard.hittime = 12
+air.hittime = 120
+ground.velocity = -3
+guard.velocity = -4
+air.velocity = -5.5, -5.8
+ground.cornerPush.velOff = 0
+guard.cornerPush.velOff = 0
+air.cornerPush.velOff = 0
+yaccel = .58
+fall = 0
+fall.recover = 1
+fall.recovertime = 120
+palFX.time = 12 * var(9)
+palFX.add = 255,255,255
+palFX.sinAdd= -255,-255,-255,48
+envshake.time = 14
+envshake.ampl = 4
+envShake.freq = 120
+
+[State 400, StateTypeSet: Idle]
+type = StateTypeSet
+trigger1 = AnimElemTime(5) >= 0
+moveType = I
+
+[State 400, End]
+type = ChangeState
+trigger1 = !AnimTime
+value = 1101
+ctrl = 0
+
+;========================<>=======================
+[Statedef 1101]
+type    = C
+movetype= A
+physics = C
+poweradd = 70 * !var(20)
+ctrl = 0
+velset = 0,0
+anim = 1100
+sprpriority = 2
+facep2=1
+
+[State 400, Voice]
+type=playsnd
+trigger1= animelem=1 && random<350
+value= 0,2
+channel=0
+
+[State 400, Swing Snd]
+type=playsnd
+trigger1= animelem=1
+value=1,0
+channel=1
+
+[State 400, HitDef]
+type = HitDef
+trigger1 = !var(16) && var(15) < 1
+trigger1 = !Time
+attr = C,NA        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+guardflag = M         ;HLA
+ID = 200
+getpower = 10 * !var(20), 0
+givepower = 30,30
+animtype = Light          ;light,medium,hard,back,up,diagup
+priority = 4,Hit   ;Hit,Miss,Dodge
+damage = ceil(ifElse(fvar(11) * 26 < 7, 7, fvar(11) * 26)), 0
+pausetime = 8,8
+guard.pausetime = 8,8
+sparkNo = -1 + 0 * (var(33) := 8013)
+guard.sparkNo = -1 + 0 * (var(34) := 8001)
+sparkXY = -10 + 0 * (var(35) := 80), var(36):=-24
+hitsound = s2,11
+guardsound = s130,1
+air.animType = Back
+fall.animType = Back
+ground.type = Low      ;Low,Trip,None
+air.type = Low
+ground.slidetime = 12 + 2*var(9)
+ground.hittime = 18 + 2*var(9)
+guard.hittime = 12
+air.hittime = 120
+ground.velocity = -3
+guard.velocity = -4
+air.velocity = -5.5, -5.8
+ground.cornerPush.velOff = 0
+guard.cornerPush.velOff = 0
+air.cornerPush.velOff = 0
+yaccel = .58
+fall = 0
+fall.recover = 1
+fall.recovertime = 120
+palFX.time = 12 * var(9)
+palFX.add = 255,255,255
+palFX.sinAdd= -255,-255,-255,48
+envshake.time = 14
+envshake.ampl = 4
+envShake.freq = 120
+
+[State 400, StateTypeSet: Idle]
+type = StateTypeSet
+trigger1 = AnimElemTime(5) >= 0
+moveType = I
+
+[State 400, End]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+ctrl = 1

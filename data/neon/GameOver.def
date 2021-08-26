@@ -1,0 +1,69 @@
+;Game over storyboard.
+
+[SceneDef]
+spr = GameOver.sff
+
+;------------------------------------
+; Display "game over" animation
+[Scene 0]
+; Fade
+fadein.time = 30
+fadeout.time = 60
+fadeout.col = 0,0,0
+; Screen color
+clearcolor = 255,255,255
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0 ;Default position for all layers
+layer0.anim =  0       ;Anim action number
+layer0.starttime = 30  ;Time to start displaying the anim
+; Total time
+bg.name = BG0
+bgm = data/neon/snd/GameOver.mp3
+bgm.loop = 0
+bgvolume=  195
+end.time = 200
+
+[BG0Def]
+
+[BG0 Wall]
+type = normal
+spriteno = 0,0
+start = 0,0
+mask = 1
+;trans = sub
+
+; Fade from white to black
+;[Scene 1]
+;fadein.time = 30
+;fadein.col = 255,255,255
+; Screen color
+;clearcolor = 0,0,0
+; Total time
+;end.time = 30
+
+;------------------------------------
+;Animation for game over (shakes the sprite)
+[Begin Action 0]
+1,0, 0,0, 2,,AS18D256
+1,0, 0,0, 2,,AS38D256
+1,0, 0,0, 2,,AS58D256
+1,0, 0,0, 2,,AS78D256
+1,0, 0,0, 2,,AS98D256
+1,0, 0,0, 2,,AS108D256
+1,0, 0,0, 2,,AS128D256
+1,0, 0,0, 30,,A
+1,0, 0,0, 2,,AS128D256
+1,0, 0,0, 2,,A
+1,0, 0,0, 2,,AS128D256
+1,0, 0,0, 30,,A
+1,0, 0,0, 2,,AS128D256
+1,0, 0,0, 2,,A
+1,0, 0,0, 2,,AS128D256
+1,0, 0,0, 30,,A
+1,0, 0,0, 2,,AS128D256
+1,0, 0,0, 2,,AS108D256
+1,0, 0,0, 2,,AS98D256
+1,0, 0,0, 2,,AS78D256
+1,0, 0,0, 2,,AS58D256
+1,0, 0,0, 2,,AS38D256
+1,0, 0,0, -1,,AS18D256

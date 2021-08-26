@@ -1,0 +1,307 @@
+
+;---------------------------------------------------------------------------
+; ここは-2のステ?トを書いてください、ヘルパ?関係です
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+[State -2, 喰らい]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = Alive
+trigger1 = stateno = 5000
+trigger2 = stateno = 5010
+trigger3 = stateno = 5020
+value = 9997, random % 4
+volume = 255
+
+[State -2, 喰らい]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = Alive
+trigger1 = stateno = 5070
+value = 9998, random % 2
+volume = 255
+
+;---------------------------------------------------------------------------
+; ここから下は-3のステ?トを書いてください、ここに書いたものはゲ??中
+; に条件が成立すればいつでも開始するステ?トです。
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+
+;ゲ??中に常にいつでも開始したいステ?ト、ここでは「着地音」に使用しています
+;下の条件は「52か106のステ?トに移動して１フレ??目に」と言う事です。
+;52と106はバックステップとジャンプの着地のステ?トです。
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 
+trigger2 = stateno = 106 
+value = 40, 0
+
+;---------------------------------------------------------------------------
+;AI made by LJH
+[State -3]
+type = varset
+triggerall = alive
+triggerall = !ishelper
+trigger1 = command = "AI_01"
+trigger2 = command = "AI_02"
+trigger3 = command = "AI_03"
+trigger4 = command = "AI_04"
+trigger5 = command = "AI_05"
+trigger6 = command = "AI_06"
+trigger7 = command = "AI_07"
+trigger8 = command = "AI_08"
+trigger9 = command = "AI_09"
+trigger10 = command = "AI_10"
+trigger11 = command = "AI_11"
+trigger12 = command = "AI_12"
+trigger13 = command = "AI_13"
+trigger14 = command = "AI_14"
+trigger15 = command = "AI_15"
+trigger16 = command = "AI_16"
+trigger17 = command = "AI_17"
+trigger18 = command = "AI_18"
+trigger19 = command = "AI_19"
+trigger20 = command = "AI_20"
+trigger21 = command = "AI_21"
+trigger22 = command = "AI_22"
+trigger23 = command = "AI_23"
+trigger24 = command = "AI_24"
+trigger25 = command = "AI_25"
+trigger26 = command = "AI_26"
+trigger27 = command = "AI_27"
+trigger28 = command = "AI_28"
+trigger29 = command = "AI_29"
+trigger30 = command = "AI_30"
+trigger31 = command = "AI_31"
+trigger32 = command = "AI_32"
+trigger33 = command = "AI_33"
+trigger34 = command = "AI_34"
+trigger35 = command = "AI_35"
+trigger36 = command = "AI_36"
+trigger37 = command = "AI_37"
+trigger38 = command = "AI_38"
+trigger39 = command = "AI_39"
+trigger40 = ailevel
+var(59) = 1
+
+[State -3]
+Type = ChangeState
+triggerall = Roundstate = 2
+triggerall = var(59)=1 && random <= 800+(enemynear,stateno != [200,699])*200+(enemynear,stateno >= 3000)*1500-(power/50)
+triggerall = stateno != [120,159]
+triggerall = !ishelper
+triggerall = ctrl
+Triggerall = P2MoveType = A
+trigger1 = InGuardDist
+trigger2 = enemy,numhelper > 0 || enemy,numproj > 0
+Value = 120+(statetype != A && p2bodydist x <= 100 && enemynear,animtime <= -17)*780+(statetype != A && p2bodydist x >= 200)*780
+
+[State -3]
+type = ChangeState
+value = 100
+triggerall = Roundstate = 2
+triggerall = var(59)=1 && random <= 700
+triggerall = p2bodydist x > 80
+triggerall = statetype != A
+triggerall = ctrl
+triggerall = stateno != 100
+triggerall = enemynear,movetype != A
+triggerall = numtarget(10000)+numtarget(10006) = 0
+trigger1 = enemynear,statetype != L
+trigger2 = enemynear,statetype = L && enemynear,alive = 0
+
+[State -3]
+type = ChangeState
+value = 105
+triggerall = Roundstate = 2
+triggerall = var(59)=1
+triggerall = p2bodydist x = [0,30]
+triggerall = backedgedist >= 30
+triggerall = statetype != A
+triggerall = ctrl
+trigger1 = enemynear,statetype = L && enemynear,alive
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1 && random <= (power/100)+ifelse((enemynear,movetype = A),950,0)
+triggerall = power >= 3000
+triggerall = !ishelper
+trigger1 = Statetype != A && Ctrl
+value = 910
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1 && random <= (power/100)+ifelse((enemynear,movetype = A),950,0)
+triggerall = power >= 1000
+triggerall = !ishelper
+triggerall = enemynear,statetype != L
+trigger1 = Statetype != A && Ctrl
+value = 10023
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1 && random <= (moveguarded)*1500+(statetype = A && enemynear,movetype = A)*700+(numtarget(10000) > 0 && frontedgedist <= 80)*1500-(numtarget(10000) > 0 && frontedgedist > 80)*3000
+triggerall = !ishelper
+triggerall = enemynear,statetype != L
+trigger1 = P2bodydist X = [-80,80]
+trigger1 = P2bodydist Y = [-110,110]
+trigger1 = Ctrl
+trigger2 = stateno = 1011 && moveguarded
+value = 10006
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1
+triggerall = !ishelper
+trigger1 = Statetype != A && Ctrl
+trigger1 = numtarget(10000) > 0 && frontedgedist > 80
+value = 10015
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1
+triggerall = !ishelper
+trigger1 = Statetype != A && Ctrl
+trigger1 = numtarget(10015) > 0
+trigger2 = Statetype != A && Ctrl
+trigger2 = numtarget(10006) > 0
+trigger3 = Statetype != A && Ctrl
+trigger3 = numtarget(10011) > 0
+trigger4 = stateno = 1009 && moveguarded
+value = 10017
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1 && random <= 600+(enemynear,statetype = L)*450+(numtarget(10017) > 0)*1000
+triggerall = P2bodydist X = [31,230]
+triggerall = !ishelper
+triggerall = NumHelper(10010) = 0
+trigger1 = Statetype != A && Ctrl
+trigger1 = P2bodydist Y = [-120,10]
+trigger1 = numtarget(10000)+numtarget(10006) = 0
+value = 10010
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1 && random <= (enemynear,statetype = A && enemynear,movetype != H)*700+(enemynear,statetype != A && enemynear,movetype = A)*500+(movehit)*1500
+triggerall = !ishelper
+triggerall = numtarget(10000) = 0
+triggerall = numtarget(10015) = 0
+triggerall = numtarget(10017) = 0
+trigger1 = Statetype != A && Ctrl
+trigger1 = p2bodydist x = [0,80]
+trigger1 = p2bodydist y = [-120,10]
+trigger2 = stateno = 1007 && movehit
+trigger3 = stateno = 1013 && movehit
+value = 10000
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1 && random <= 900
+triggerall = P2bodydist Y = [-10,10]
+triggerall = P2bodydist X = [-3,10]
+triggerall = !ishelper
+triggerall = enemynear,statetype != L
+trigger1 = Statetype != A && Ctrl
+value = 1002
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1 && random <= 990
+triggerall = P2bodydist Y = [-10,10]
+triggerall = P2bodydist X = [-3,25]
+triggerall = !ishelper
+trigger1 = enemynear,statetype != L
+trigger1 = Statetype != A && Ctrl
+trigger2 = stateno = 1002
+trigger2 = movecontact
+trigger2 = time > 5
+value = 1003
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1
+triggerall = !ishelper
+trigger1 = stateno = 1003
+trigger1 = movehit
+trigger1 = time > 5
+trigger2 = stateno = 1002
+trigger2 = movehit && enemynear,statetype = A
+trigger2 = time > 5
+value = 1007+(p2bodydist x >= 30)*6
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1
+triggerall = !ishelper
+trigger1 = stateno = 1003
+trigger1 = moveguarded
+trigger1 = time > 5
+value = 1009
+
+[State -3]
+type = Changestate
+triggerall = roundstate = 2
+triggerall = var(59) = 1
+triggerall = !ishelper
+trigger1 = stateno = 1009
+trigger1 = movehit
+value = 912
+
+[State -3]
+type = ChangeState
+triggerall=Roundstate=2
+triggerall = statetype = A && ctrl
+triggerall = stateno != 105
+trigger1 = var(59)=1
+trigger1 = P2bodydist X = [0,180]
+trigger1 = P2bodydist Y= [-50,130]
+trigger1 = ctrl
+value = 1011
+
+[State -3]
+type = ChangeState
+value = 52000
+triggerall = var(59) = 1
+triggerall = alive = 1
+triggerall = !ishelper
+trigger1 = stateno = 5050
+trigger1 = vel y > 0
+trigger1 = pos y > -30
+
+[State -3]
+type = Destroyself
+trigger1 = ishelper(10023)
+trigger1 = stateno != [10027,10030]
+trigger1 = stateno != 52
+trigger2 = ishelper(10010)
+trigger2 = stateno != [10011,10014]
+trigger2 = stateno != 100131
+
+[State -3]
+type = Selfstate
+trigger1 = ishelper(10023)
+trigger1 = stateno = 52
+value = 10028
+
+[State -3]
+type = screenbound
+trigger1 = ishelper(10023)
+trigger2 = ishelper(10010)
+value = 0
+movecamera = 0,0

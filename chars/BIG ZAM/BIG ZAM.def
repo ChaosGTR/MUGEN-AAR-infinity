@@ -1,0 +1,25 @@
+[Info]
+name="BIG ZAM"
+displayname="BIG ZAM"
+versiondate=04-02-2008
+mugenversion=
+author="taurusac195"
+pal.defaults=1,2,3,4,5,6
+[Files]
+sprite=BZAM.sff
+sound=BZAM.SND
+anim=BZAM.AIR
+cmd=BZAM.cmd
+cns=BZAM.cns
+st=BZAM.cns
+stcommon=BZcommon.cns
+pal1=BZAM01.ACT
+pal2=BZAM02.ACT
+pal3=BZAM03.ACT
+pal4=BZAM04.ACT
+pal5=BZAM05.ACT
+pal6=BZAM06.ACT
+st1=minus.cns
+[Arcade]
+intro.storyboard=
+ending.storyboard=

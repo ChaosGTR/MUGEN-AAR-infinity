@@ -1,0 +1,1063 @@
+; Definition of fight screen
+
+; *** DO NOT MODIFY OR OVERWRITE THIS FILE ***
+; To customize, make a copy of this file in a subdirectory of your
+; motif's name. See readme.txt for details on motifs.
+
+; *2001.11.01 NEW* symbolizes any new parameters added for the 2001.11.01
+; version of M.U.G.E.N.
+
+; Notes about fonts:
+;   - do not index fonts greater than 9 (crash)
+;   - fonts indexed here do not refer to the ones in
+;     system.def
+;
+; See the section "How to Customize" at the end of
+; this file.
+
+;-----------------------------------------------------------
+;Directories are checked in this order:
+;1. current directory fight.def is in
+;2. data/
+;3. your MUGEN directory
+
+[Info]
+name = "Neon Lifebar"    
+author = "necro_rk"
+
+
+[Files]
+sff = fight.sff
+snd = fight.snd
+font1 = font/Nlife_char.fnt
+font2 = font/Npower.fnt
+font3 = font/Ntime.fnt
+font4 = font/Ncombo.fnt
+font5 = font/Nwinner.fnt
+fightfx.sff = fightfx.sff
+fightfx.air = fightfx.air
+common.snd = common.snd
+
+
+[FightFX]
+scale = 2
+;-----------------------------------------------------------
+[Lifebar]
+;Player 1
+p1.pos = 280,24 ;140,12
+p1.bg0.spr = 211,0
+
+p1.mid.spr = 212,0
+
+p1.front.anim = 11
+
+p1.range.x  = -10,-212;-5,-212 ;-5,-106 
+
+;Player 2
+p2.pos    = 359,24 ;180,12
+p2.bg0.spr = 211,0
+p2.bg0.facing = -1
+
+p2.mid.spr = 212,0
+p2.mid.facing = -1
+
+p2.front.anim = 11
+p2.front.facing = -1
+
+p2.range.x = 10,212;5,212 ;5,106 
+
+[Begin Action 11] ;Lifebar effect
+213,0, 0,0, 50
+213,1, 0,0, 2
+213,2, 0,0, 2
+213,3, 0,0, 2
+213,4, 0,0, 2
+213,5, 0,0, 2
+213,6, 0,0, 2
+213,7, 0,0, 2
+213,8, 0,0, 2
+213,9, 0,0, 2
+213,10, 0,0, 2
+213,11, 0,0, 2
+213,12, 0,0, 2
+213,13, 0,0, 2
+213,14, 0,0, 2
+213,15, 0,0, 2
+213,16, 0,0, 2
+213,17, 0,0, 2
+213,18, 0,0, 2
+213,19, 0,0, 2
+213,20, 0,0, 2
+213,21, 0,0, 2
+213,22, 0,0, 2
+213,23, 0,0, 2
+213,24, 0,0, 2
+213,25, 0,0, 2
+213,26, 0,0, 2
+213,27, 0,0, 2
+213,28, 0,0, 2
+213,29, 0,0, 2
+213,30, 0,0, 2
+213,31, 0,0, 2
+213,32, 0,0, 2
+213,33, 0,0, 2
+213,34, 0,0, 2
+213,35, 0,0, 2
+213,36, 0,0, 2
+213,37, 0,0, 2
+213,38, 0,0, 2
+213,39, 0,0, 2
+213,40, 0,0, 2
+213,41, 0,0, 2
+213,42, 0,0, 2
+213,43, 0,0, 2
+213,44, 0,0, 2
+213,45, 0,0, 2
+213,46, 0,0, 2
+213,47, 0,0, 2
+213,48, 0,0, 2
+213,49, 0,0, 2
+213,50, 0,0, 2
+
+
+[Simul Lifebar]
+;Player 1
+p1.pos    = 280,24;140,12
+p1.bg0.spr = 221,0
+;p1.mid.offset = 0,-1
+p1.mid.spr = 222,0
+;p1.front.offset = 0,-1
+p1.front.spr = 223,0
+p1.range.x  = -16,-212 ;-8,-106 
+
+;Player 2
+p2.pos    = 359,24;360,24 ;180,12
+p2.bg0.spr = 221,0
+p2.bg0.facing = -1
+;p2.mid.offset = 0,-1
+p2.mid.spr = 222,0
+p2.mid.facing = -1
+;p2.front.offset = 0,-1
+p2.front.spr = 223,0
+p2.front.facing = -1
+p2.range.x = 16,212 ;8, 106 
+
+;Player 3
+p3.pos    = 280,24 ;140,12
+p3.mid.spr = 224,0
+p3.front.spr = 225,0
+p3.range.x  = -10,-200 ;-5,-100 
+
+;Player 4
+p4.pos    = 359,24;360,24 ;180,12
+p4.mid.spr = 224,0
+p4.mid.facing = -1
+p4.front.spr = 225,0
+p4.front.facing = -1
+p4.range.x = 10,200 ;5,100
+
+
+[Turns Lifebar]
+;Player 1
+p1.pos = 280,24 ;140,12
+p1.bg0.spr = 211,0
+
+p1.mid.spr = 212,0
+
+p1.front.anim = 11
+
+p1.range.x  = -5,-212 ;-5,-106 
+
+;Player 2
+p2.pos    = 359,24 ;180,12
+p2.bg0.spr = 211,0
+p2.bg0.facing = -1
+
+p2.mid.spr = 212,0
+p2.mid.facing = -1
+
+p2.front.anim = 11
+p2.front.facing = -1
+
+p2.range.x = 5,212 ;5,106 
+
+;-----------------------------------------------------------
+
+[Powerbar]
+;Player 1
+p1.pos    = 280,24 ;140,12
+p1.front.spr = 243,0
+p1.range.x = -50,-214 ;-25,-107
+p1.counter.offset = -222,22 ;-111,11
+p1.counter.font = 2,0, 0
+
+;Player 2
+p2.pos    = 359,24;360,24 ;180,12
+p2.front.spr = 243,0
+p2.front.facing = -1
+p2.range.x  = 49,213;50,214 ;25,107
+p2.counter.offset = 224,22 ;111,11
+p2.counter.font = 2,0, 0
+
+; --level sounds---
+level1.snd = 21,0
+level2.snd = 21,0
+level3.snd = 21,0
+
+
+;-----------------------------------------------------------
+[Face]
+;Player 1
+p1.pos    = 6,6 ;3,3 ;2,12
+;p1.bg.spr = 50,0
+p1.face.spr = 9000,0
+p1.face.scale = 0.75,0.75
+p1.face.facing = 1
+p1.face.offset = 0,0
+;Player 2
+p2.pos    = 633,6 ;317,3 ;316,12
+;p2.bg.spr = 50,0
+p2.bg.facing = -1
+p2.face.spr = 9000,0
+p2.face.scale = 0.75,0.75
+p2.face.facing = -1
+p2.face.offset = 0,0
+
+[Simul Face]
+;Player 1
+p1.pos    = 6,6 ;3,3 ;1,12
+;p1.bg.spr = 60,0
+p1.face.spr = 9000,0
+p1.face.scale = 0.75,0.75
+p1.face.facing = 1
+p1.face.offset = 0,0
+;Player 2
+p2.pos    = 633,6 ;317,3
+;p2.bg.spr = 60,0
+p2.bg.facing = -1
+p2.face.spr = 9000,0
+p2.face.scale = 0.75,0.75
+p2.face.facing = -1
+p2.face.offset = 0,0
+;Player 3
+p3.pos    = 6,56 ;3,28 ;2,12
+p3.face.spr = 9000,0
+p3.face.scale = 0.75,0.75
+p3.face.facing = 1
+p3.face.offset = 0,0 ;11,10
+;Player 4
+p4.pos    = 633,56 ;317,28
+p4.bg.facing = -1
+p4.face.spr = 9000,0
+p4.face.scale = 0.75,0.75
+p4.face.facing = -1
+p4.face.offset = 0,0;-11,10
+
+[Turns Face]
+;Player 1
+p1.pos    = 6,6 ;3,3
+p1.face.spr = 9000,0
+p1.face.scale = 0.75,0.75
+p1.face.facing = 1
+p1.face.offset = 0,0
+p1.teammate.pos = 0,54 ;0,27 
+p1.teammate.spacing = 24,0 ;12,0
+p1.teammate.bg.spr = 270,0
+p1.teammate.ko.spr = 271,0
+p1.teammate.face.spr = 9000,0
+p1.teammate.face.scale = 0.4,0.4
+p1.teammate.face.facing = 1
+p1.teammate.face.offset = 2,2;1,1 
+;Player 2
+p2.pos    = 633,6 ;317,3
+;p2.bg.spr = 50,0
+p2.bg.facing = -1
+p2.face.spr = 9000,0
+p2.face.scale = 0.75,0.75
+p2.face.facing = -1
+p2.face.offset = 0,0
+p2.teammate.pos = 640,54 ;320,27
+p2.teammate.spacing = -24,0;-12,0
+p2.teammate.bg.spr = 270,0
+p2.teammate.bg.facing = -1
+p2.teammate.ko.spr = 272,0
+;p2.teammate.ko.facing = -1
+p2.teammate.face.spr = 9000,0
+p2.teammate.face.scale = 0.4,0.4
+p2.teammate.face.facing = -1
+p2.teammate.face.offset = -2,2 ;-1,1
+
+;-----------------------------------------------------------
+[Name]
+p1.pos = 54,34 ;27,17
+;p1.bg. =
+p1.name.font = 1,0, 1
+;p2.bg. =
+p2.pos = 586,34;293,17
+p2.name.font = 1,0, -1
+
+[Simul Name]
+p1.pos = 54,34 ;27,17
+p1.name.font = 1,0, 1
+p2.pos = 586,34 ;293,17
+p2.name.font = 1,0, -1
+p3.pos = 54,61 ;27,31
+p3.name.font = 1,0, 1
+p4.pos = 586,61 ;293,31
+p4.name.font = 1,0, -1
+
+[Turns Name]
+p1.pos = 54,34 ;27,17 ;14,10
+;p1.bg. =
+p1.name.font = 1,0, 1
+;p2.bg. =
+p2.pos = 586,34 ;293,17 ;305,10
+p2.name.font = 1,0, -1
+
+;-----------------------------------------------------------
+[Time]
+pos = 320,46 ;160,23
+; Uncomment the following line to use a bg component
+bg.anim = 225
+;bg.scale = 0.5,0.5
+; Time count display
+counter.offset = 0,-16
+counter.font = 3,0, 0
+; Ticks for each count
+framespercount = 60
+
+[Begin Action 225]
+227,3, 0,0, 9
+227,4, 0,0, 9
+227,5, 0,0, 9
+227,6, 0,0, 9
+227,0, 0,0, 9
+227,1, 0,0, 9
+227,2, 0,0, 9
+
+;-----------------------------------------------------------
+[Combo]
+team1.pos = 0,180; -45,80
+team2.pos = 685,180
+team1.start.x = -240
+team2.start.x = 940 
+;team1.counter.font = 4,0,1
+;team2.counter.font = 4,0,1
+team1.counter.shake = 1
+team2.counter.shake = 1
+team1.text.text = %iB
+team2.text.text = A%iB
+team1.text.font = 4,0,1
+team2.text.font = 4,0,-1
+team1.text.offset = 0,0
+team2.text.offset = 0,0
+team1.displaytime = 90
+team2.displaytime = 90
+
+;-----------------------------------------------------------
+[Round]
+match.wins = 2              ;Rounds needed to win a match
+match.maxdrawgames = 1      ;Max number of drawgames allowed (-1 for infinite) *2001.11.01 NEW*
+start.waittime = 30         ;Time to wait before starting intro
+
+; Default position for all components
+pos = 0,0
+
+; ROUND X
+;round.time = 65;0              ;Time to show round display
+;round.default.offset = 160, 100
+; Default component to show for each round. Text can include a %i to
+; the round number. Use "round.default.anim" for animation instead of
+; text.
+;round.default.font = 1,0, 0
+;round.default.text = Round %i
+;round.default.displaytime = 60
+; Sounds to play for each round (optional, specify up to round 9)
+round1.snd = 0,1
+round2.snd = 0,1
+round3.snd = 0,1
+round4.snd = 0,1
+round5.snd = 0,1
+round6.snd = 0,1
+round7.snd = 0,1
+round8.snd = 0,1
+round9.snd = 0,1
+round.sndtime = 0           ;Time to play the sounds
+; Components to show for each round (optional, specify up to round 9)
+; Uncomment to use
+;round1.time = 65
+round1.offset = 0,0 ;160, 100
+round1.anim = 71
+round2.offset = 0, 0
+round2.anim = 72
+round3.offset = 0, 0
+round3.anim = 73
+round4.offset = 0, 0
+round4.anim = 74
+round5.offset = 0, 0
+round5.anim = 75
+round6.offset = 0, 0
+round6.anim = 76
+round7.offset = 0, 0
+round7.anim = 77
+round8.offset = 0, 0
+round8.anim = 78
+round9.offset = 0, 0
+round9.anim = 79
+
+; FIGHT
+fight.time = 22              ;Time to show FIGHT component
+fight.offset = 0, 0     ;Component for FIGHT display
+fight.anim = 80             ;.
+fight.snd = 1,0             ;Sound to play
+fight.sndtime = 22           ;Time to play sound
+fight.layerno = 17
+
+ctrl.time = 72;30              ;Time players get control after "Fight"
+
+; KO
+KO.time    = 0              ;Time to show KO component
+KO.offset  = 0,0 ;160, 70        ;Component for KO display
+KO.anim    = 200            ;.
+KO.snd     = 2,0            ;Sound to play for KO announcement
+
+; Double KO
+DKO.displaytime = 60
+DKO.offset  = 0,0 ;160, 70        ;Component for KO display
+DKO.anim    = 210            ;.
+DKO.snd     = 2,1            ;Sound to play for KO announcement
+
+
+; Time Over
+TO.displaytime = 110
+TO.offset  = 0,0 ;160, 70        ;Component for KO display
+TO.anim    = 220            ;.
+TO.snd     = 2,2            ;Sound to play for KO announcement
+
+KO.sndtime = 0             ;Time to play sound for KO, DKO and TO.
+slow.time  = 60            ;Time for KO slowdown (in ticks)
+
+over.waittime = 45         ;Time to wait after KO before player control is stopped
+over.hittime = 10          ;Time after KO that players can still damage each other (for double KO)
+over.wintime = 45          ;Time to wait before players change to win states
+over.time = 210            ;Time to wait before round ends
+
+; Time to wait before showing win/draw message
+win.time = 60
+
+; Win text
+win.offset = 320,140 ;160, 70
+win.font = 5,0
+win.text = {%s Wins}
+win.displaytime = 540
+
+
+; 2-player win text
+win2.offset = 320,140 ;160, 70
+win2.font = 5,0
+win2.text = {%s and %s Win}
+win2.displaytime = 540
+
+
+; Draw text
+draw.displaytime = 110
+draw.offset  = 0,0 ;160, 70        ;Component for KO display
+draw.anim    = 221
+draw.snd     = 2,3            ;Sound to play for KO announcement
+
+
+[Begin Action 71] ;Round 1
+281,39, -560,0, 2
+281,39, -480,0, 2
+281,39, -400,0, 2
+281,39, -320,0, 2
+281,39, -240,0, 2
+281,39, -160,0, 2
+281,39, -80,0, 2
+281,39, 0,0, 1
+281,38, 0,0, 1
+281,37, 0,0, 1
+281,36, 0,0, 1
+281,35, 0,0, 1
+281,34, 0,0, 1
+281,33, 0,0, 1
+281,32, 0,0, 1
+281,31, 0,0, 1
+281,30, 0,0, 1
+281,29, 0,0, 1
+281,28, 0,0, 1
+281,27, 0,0, 1
+281,26, 0,0, 1
+281,25, 0,0, 1
+281,24, 0,0, 1
+281,23, 0,0, 1
+281,22, 0,0, 1
+281,21, 0,0, 1
+281,20, 0,0, 1
+281,19, 0,0, 1
+281,18, 0,0, 1
+281,17, 0,0, 1
+281,16, 0,0, 1
+281,15, 0,0, 1
+281,14, 0,0, 1
+281,13, 0,0, 1
+281,12, 0,0, 1
+281,11, 0,0, 1
+281,10, 0,0, 1
+281,9, 0,0, 1
+281,8, 0,0, 1
+281,7, 0,0, 1
+281,6, 0,0, 1
+281,5, 0,0, 1
+281,4, 0,0, 1
+281,3, 0,0, 1
+281,2, 0,0, 1
+281,1, 0,0, 1
+281,0, 0,0, 35
+
+[Begin Action 72] ;Round 2
+282,39, -560,0, 2
+282,39, -480,0, 2
+282,39, -400,0, 2
+282,39, -320,0, 2
+282,39, -240,0, 2
+282,39, -160,0, 2
+282,39, -80,0, 2
+282,39, 0,0, 1
+282,38, 0,0, 1
+282,37, 0,0, 1
+282,36, 0,0, 1
+282,35, 0,0, 1
+282,34, 0,0, 1
+282,33, 0,0, 1
+282,32, 0,0, 1
+282,31, 0,0, 1
+282,30, 0,0, 1
+282,29, 0,0, 1
+282,28, 0,0, 1
+282,27, 0,0, 1
+282,26, 0,0, 1
+282,25, 0,0, 1
+282,24, 0,0, 1
+282,23, 0,0, 1
+282,22, 0,0, 1
+282,21, 0,0, 1
+282,20, 0,0, 1
+282,19, 0,0, 1
+282,18, 0,0, 1
+282,17, 0,0, 1
+282,16, 0,0, 1
+282,15, 0,0, 1
+282,14, 0,0, 1
+282,13, 0,0, 1
+282,12, 0,0, 1
+282,11, 0,0, 1
+282,10, 0,0, 1
+282,9, 0,0, 1
+282,8, 0,0, 1
+282,7, 0,0, 1
+282,6, 0,0, 1
+282,5, 0,0, 1
+282,4, 0,0, 1
+282,3, 0,0, 1
+282,2, 0,0, 1
+282,1, 0,0, 1
+282,0, 0,0, 35
+
+[Begin Action 73] ;Round 3
+283,39, -560,0, 2
+283,39, -480,0, 2
+283,39, -400,0, 2
+283,39, -320,0, 2
+283,39, -240,0, 2
+283,39, -160,0, 2
+283,39, -80,0, 2
+283,39, 0,0, 1
+283,38, 0,0, 1
+283,37, 0,0, 1
+283,36, 0,0, 1
+283,35, 0,0, 1
+283,34, 0,0, 1
+283,33, 0,0, 1
+283,32, 0,0, 1
+283,31, 0,0, 1
+283,30, 0,0, 1
+283,29, 0,0, 1
+283,28, 0,0, 1
+283,27, 0,0, 1
+283,26, 0,0, 1
+283,25, 0,0, 1
+283,24, 0,0, 1
+283,23, 0,0, 1
+283,22, 0,0, 1
+283,21, 0,0, 1
+283,20, 0,0, 1
+283,19, 0,0, 1
+283,18, 0,0, 1
+283,17, 0,0, 1
+283,16, 0,0, 1
+283,15, 0,0, 1
+283,14, 0,0, 1
+283,13, 0,0, 1
+283,12, 0,0, 1
+283,11, 0,0, 1
+283,10, 0,0, 1
+283,9, 0,0, 1
+283,8, 0,0, 1
+283,7, 0,0, 1
+283,6, 0,0, 1
+283,5, 0,0, 1
+283,4, 0,0, 1
+283,3, 0,0, 1
+283,2, 0,0, 1
+283,1, 0,0, 1
+283,0, 0,0, 35
+
+[Begin Action 74] ;Round 4
+284,39, -560,0, 2
+284,39, -480,0, 2
+284,39, -400,0, 2
+284,39, -320,0, 2
+284,39, -240,0, 2
+284,39, -160,0, 2
+284,39, -80,0, 2
+284,39, 0,0, 1
+284,38, 0,0, 1
+284,37, 0,0, 1
+284,36, 0,0, 1
+284,35, 0,0, 1
+284,34, 0,0, 1
+284,33, 0,0, 1
+284,32, 0,0, 1
+284,31, 0,0, 1
+284,30, 0,0, 1
+284,29, 0,0, 1
+284,28, 0,0, 1
+284,27, 0,0, 1
+284,26, 0,0, 1
+284,25, 0,0, 1
+284,24, 0,0, 1
+284,23, 0,0, 1
+284,22, 0,0, 1
+284,21, 0,0, 1
+284,20, 0,0, 1
+284,19, 0,0, 1
+284,18, 0,0, 1
+284,17, 0,0, 1
+284,16, 0,0, 1
+284,15, 0,0, 1
+284,14, 0,0, 1
+284,13, 0,0, 1
+284,12, 0,0, 1
+284,11, 0,0, 1
+284,10, 0,0, 1
+284,9, 0,0, 1
+284,8, 0,0, 1
+284,7, 0,0, 1
+284,6, 0,0, 1
+284,5, 0,0, 1
+284,4, 0,0, 1
+284,3, 0,0, 1
+284,2, 0,0, 1
+284,1, 0,0, 1
+284,0, 0,0, 35
+
+[Begin Action 75] ;Round 5
+285,39, -560,0, 2
+285,39, -480,0, 2
+285,39, -400,0, 2
+285,39, -320,0, 2
+285,39, -240,0, 2
+285,39, -160,0, 2
+285,39, -80,0, 2
+285,39, 0,0, 1
+285,38, 0,0, 1
+285,37, 0,0, 1
+285,36, 0,0, 1
+285,35, 0,0, 1
+285,34, 0,0, 1
+285,33, 0,0, 1
+285,32, 0,0, 1
+285,31, 0,0, 1
+285,30, 0,0, 1
+285,29, 0,0, 1
+285,28, 0,0, 1
+285,27, 0,0, 1
+285,26, 0,0, 1
+285,25, 0,0, 1
+285,24, 0,0, 1
+285,23, 0,0, 1
+285,22, 0,0, 1
+285,21, 0,0, 1
+285,20, 0,0, 1
+285,19, 0,0, 1
+285,18, 0,0, 1
+285,17, 0,0, 1
+285,16, 0,0, 1
+285,15, 0,0, 1
+285,14, 0,0, 1
+285,13, 0,0, 1
+285,12, 0,0, 1
+285,11, 0,0, 1
+285,10, 0,0, 1
+285,9, 0,0, 1
+285,8, 0,0, 1
+285,7, 0,0, 1
+285,6, 0,0, 1
+285,5, 0,0, 1
+285,4, 0,0, 1
+285,3, 0,0, 1
+285,2, 0,0, 1
+285,1, 0,0, 1
+285,0, 0,0, 35
+
+[Begin Action 76] ;Round 6
+286,39, -560,0, 2
+286,39, -480,0, 2
+286,39, -400,0, 2
+286,39, -320,0, 2
+286,39, -240,0, 2
+286,39, -160,0, 2
+286,39, -80,0, 2
+286,39, 0,0, 1
+286,38, 0,0, 1
+286,37, 0,0, 1
+286,36, 0,0, 1
+286,35, 0,0, 1
+286,34, 0,0, 1
+286,33, 0,0, 1
+286,32, 0,0, 1
+286,31, 0,0, 1
+286,30, 0,0, 1
+286,29, 0,0, 1
+286,28, 0,0, 1
+286,27, 0,0, 1
+286,26, 0,0, 1
+286,25, 0,0, 1
+286,24, 0,0, 1
+286,23, 0,0, 1
+286,22, 0,0, 1
+286,21, 0,0, 1
+286,20, 0,0, 1
+286,19, 0,0, 1
+286,18, 0,0, 1
+286,17, 0,0, 1
+286,16, 0,0, 1
+286,15, 0,0, 1
+286,14, 0,0, 1
+286,13, 0,0, 1
+286,12, 0,0, 1
+286,11, 0,0, 1
+286,10, 0,0, 1
+286,9, 0,0, 1
+286,8, 0,0, 1
+286,7, 0,0, 1
+286,6, 0,0, 1
+286,5, 0,0, 1
+286,4, 0,0, 1
+286,3, 0,0, 1
+286,2, 0,0, 1
+286,1, 0,0, 1
+286,0, 0,0, 35
+
+[Begin Action 77] ;Round 7
+287,39, -560,0, 2
+287,39, -480,0, 2
+287,39, -400,0, 2
+287,39, -320,0, 2
+287,39, -240,0, 2
+287,39, -160,0, 2
+287,39, -80,0, 2
+287,39, 0,0, 1
+287,38, 0,0, 1
+287,37, 0,0, 1
+287,36, 0,0, 1
+287,35, 0,0, 1
+287,34, 0,0, 1
+287,33, 0,0, 1
+287,32, 0,0, 1
+287,31, 0,0, 1
+287,30, 0,0, 1
+287,29, 0,0, 1
+287,28, 0,0, 1
+287,27, 0,0, 1
+287,26, 0,0, 1
+287,25, 0,0, 1
+287,24, 0,0, 1
+287,23, 0,0, 1
+287,22, 0,0, 1
+287,21, 0,0, 1
+287,20, 0,0, 1
+287,19, 0,0, 1
+287,18, 0,0, 1
+287,17, 0,0, 1
+287,16, 0,0, 1
+287,15, 0,0, 1
+287,14, 0,0, 1
+287,13, 0,0, 1
+287,12, 0,0, 1
+287,11, 0,0, 1
+287,10, 0,0, 1
+287,9, 0,0, 1
+287,8, 0,0, 1
+287,7, 0,0, 1
+287,6, 0,0, 1
+287,5, 0,0, 1
+287,4, 0,0, 1
+287,3, 0,0, 1
+287,2, 0,0, 1
+287,1, 0,0, 1
+287,0, 0,0, 35
+
+[Begin Action 78] ;Round 8
+288,39, -560,0, 2
+288,39, -480,0, 2
+288,39, -400,0, 2
+288,39, -320,0, 2
+288,39, -240,0, 2
+288,39, -160,0, 2
+288,39, -80,0, 2
+288,39, 0,0, 1
+288,38, 0,0, 1
+288,37, 0,0, 1
+288,36, 0,0, 1
+288,35, 0,0, 1
+288,34, 0,0, 1
+288,33, 0,0, 1
+288,32, 0,0, 1
+288,31, 0,0, 1
+288,30, 0,0, 1
+288,29, 0,0, 1
+288,28, 0,0, 1
+288,27, 0,0, 1
+288,26, 0,0, 1
+288,25, 0,0, 1
+288,24, 0,0, 1
+288,23, 0,0, 1
+288,22, 0,0, 1
+288,21, 0,0, 1
+288,20, 0,0, 1
+288,19, 0,0, 1
+288,18, 0,0, 1
+288,17, 0,0, 1
+288,16, 0,0, 1
+288,15, 0,0, 1
+288,14, 0,0, 1
+288,13, 0,0, 1
+288,12, 0,0, 1
+288,11, 0,0, 1
+288,10, 0,0, 1
+288,9, 0,0, 1
+288,8, 0,0, 1
+288,7, 0,0, 1
+288,6, 0,0, 1
+288,5, 0,0, 1
+288,4, 0,0, 1
+288,3, 0,0, 1
+288,2, 0,0, 1
+288,1, 0,0, 1
+288,0, 0,0, 35
+
+[Begin Action 79] ;Round extra
+289,39, -560,0, 2
+289,39, -480,0, 2
+289,39, -400,0, 2
+289,39, -320,0, 2
+289,39, -240,0, 2
+289,39, -160,0, 2
+289,39, -80,0, 2
+289,39, 0,0, 1
+289,38, 0,0, 1
+289,37, 0,0, 1
+289,36, 0,0, 1
+289,35, 0,0, 1
+289,34, 0,0, 1
+289,33, 0,0, 1
+289,32, 0,0, 1
+289,31, 0,0, 1
+289,30, 0,0, 1
+289,29, 0,0, 1
+289,28, 0,0, 1
+289,27, 0,0, 1
+289,26, 0,0, 1
+289,25, 0,0, 1
+289,24, 0,0, 1
+289,23, 0,0, 1
+289,22, 0,0, 1
+289,21, 0,0, 1
+289,20, 0,0, 1
+289,19, 0,0, 1
+289,18, 0,0, 1
+289,17, 0,0, 1
+289,16, 0,0, 1
+289,15, 0,0, 1
+289,14, 0,0, 1
+289,13, 0,0, 1
+289,12, 0,0, 1
+289,11, 0,0, 1
+289,10, 0,0, 1
+289,9, 0,0, 1
+289,8, 0,0, 1
+289,7, 0,0, 1
+289,6, 0,0, 1
+289,5, 0,0, 1
+289,4, 0,0, 1
+289,3, 0,0, 1
+289,2, 0,0, 1
+289,1, 0,0, 1
+289,0, 0,0, 35
+
+;-------------------------------end founds anim
+
+;"Fight!" Animation
+[Begin Action 80]
+280,5, 0,0, 3
+280,4, 0,0, 3
+280,3, 0,0, 3
+280,2, 0,0, 3
+280,1, 0,0, 3
+280,0, 0,0, 35
+
+
+;"K.O." Animation
+[Begin Action 200]
+;-1,-1, 0,0, 5
+290,5, 0,0, 3
+290,4, 0,0, 3
+290,3, 0,0, 3
+290,2, 0,0, 3
+290,1, 0,0, 3
+290,0, 0,0, 65
+
+;"Double K.O." Animation
+[Begin Action 210]
+291,5, 0,0, 3
+291,4, 0,0, 3
+291,3, 0,0, 3
+291,2, 0,0, 3
+291,1, 0,0, 3
+291,0, 0,0, 65
+
+;Time Over anim
+[Begin Action 220]
+292,30, -560,0, 2
+292,30, -480,0, 2
+292,30, -400,0, 2
+292,30, -320,0, 2
+292,30, -240,0, 2
+292,30, -160,0, 2
+292,30, -80,0, 2
+292,29, 0,0, 1
+292,28, 0,0, 1
+292,27, 0,0, 1
+292,26, 0,0, 1
+292,25, 0,0, 1
+292,24, 0,0, 1
+292,23, 0,0, 1
+292,22, 0,0, 1
+292,21, 0,0, 1
+292,20, 0,0, 1
+292,19, 0,0, 1
+292,18, 0,0, 1
+292,17, 0,0, 1
+292,16, 0,0, 1
+292,15, 0,0, 1
+292,14, 0,0, 1
+292,13, 0,0, 1
+292,12, 0,0, 1
+292,11, 0,0, 1
+292,10, 0,0, 1
+292,9, 0,0, 1
+292,8, 0,0, 1
+292,7, 0,0, 1
+292,6, 0,0, 1
+292,5, 0,0, 1
+292,4, 0,0, 1
+292,3, 0,0, 1
+292,2, 0,0, 1
+292,1, 0,0, 1
+292,0, 0,0, 65
+
+;Draw
+[Begin Action 221]
+293,29, -560,0, 2
+293,29, -480,0, 2
+293,29, -400,0, 2
+293,29, -320,0, 2
+293,29, -240,0, 2
+293,29, -160,0, 2
+293,29, -80,0, 2
+293,29, 0,0, 1
+293,28, 0,0, 1
+293,27, 0,0, 1
+293,26, 0,0, 1
+293,25, 0,0, 1
+293,24, 0,0, 1
+293,23, 0,0, 1
+293,22, 0,0, 1
+293,21, 0,0, 1
+293,20, 0,0, 1
+293,19, 0,0, 1
+293,18, 0,0, 1
+293,17, 0,0, 1
+293,16, 0,0, 1
+293,15, 0,0, 1
+293,14, 0,0, 1
+293,13, 0,0, 1
+293,12, 0,0, 1
+293,11, 0,0, 1
+293,10, 0,0, 1
+293,9, 0,0, 1
+293,8, 0,0, 1
+293,7, 0,0, 1
+293,6, 0,0, 1
+293,5, 0,0, 1
+293,4, 0,0, 1
+293,3, 0,0, 1
+293,2, 0,0, 1
+293,1, 0,0, 1
+293,0, 0,0, 65
+
+
+;-----------------------------------------------------------
+[WinIcon]
+p1.pos = 260,34 ;130,17
+p2.pos = 380,34;190,17
+; Offset for next icon (x,y)
+p1.iconoffset = -22,0  
+p2.iconoffset = 22,0
+; Counter text font and offset for representing wins
+p1.counter.offset = 0,0
+p1.counter.font = 2,0
+p2.counter.offset = 0,0
+p2.counter.font = 2,0
+; Win by normal
+p1.n.spr = 100,0
+p2.n.spr = 100,0
+; Win by special
+p1.s.spr = 101,0
+p2.s.spr = 101,0
+; Win by hyper (super)
+p1.h.spr = 102,0
+p2.h.spr = 102,0
+; Win by normal throw
+p1.throw.spr = 103,0
+p2.throw.spr = 103,0
+; Win by cheese
+p1.c.spr = 104,0
+p2.c.spr = 104,0
+; Win by time over
+p1.t.spr = 105,0
+p2.t.spr = 105,0
+; Win by suicide (here's a fun one)
+p1.suicide.spr = 106,0
+p2.suicide.spr = 106,0
+; Opponent beaten by his own teammate (another fun one)
+p1.teammate.spr = 107,0
+p2.teammate.spr = 107,0
+
+; Win by perfect (overlay icon)
+p1.perfect.spr = 110,0
+p2.perfect.spr = 110,0
+; Use icons up until this number of wins
+useiconupto = 4

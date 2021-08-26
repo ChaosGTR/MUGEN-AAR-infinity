@@ -1,0 +1,429 @@
+;---------------------------------------------------------------------------
+; Override common states (use same number to override) :
+;---------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+[State -2, 1]
+type = Turn
+trigger1 = teamside = 1
+trigger1 = facing = -1
+
+[State -2, 1]
+type = Turn
+trigger1 = teamside = 2
+trigger1 = facing = 1
+
+[State -2, 1]
+type = AssertSpecial
+trigger1 = 1
+flag = noautoturn
+
+[State -2, 1]
+type = AssertSpecial
+trigger1 = 1
+flag = nostandguard
+
+[State -2, 1]
+type = AssertSpecial
+trigger1 = 1
+flag = noairguard
+
+[State -2, 1]
+type = VarSet
+triggerall = stateno = 21
+trigger1 = AnimElem = 96
+v = 20
+value = 0
+
+[State -2, 1]
+type = VarSet
+triggerall = stateno = 21
+trigger1 = AnimElem = 30
+trigger2 = AnimElem = 96
+;trigger1 = time = 0
+v = 23
+value = 1
+
+[State -2, 1]
+type = VarSet
+trigger1 = stateno = 0
+trigger2 = Anim = 47
+v = 50
+value = 0
+
+[State -2, 2]
+type = PosSet
+trigger1 = Anim = 120
+trigger2 = Anim = 130
+trigger3 = Anim = 140
+trigger4 = Anim = 150
+y = 0
+
+[State -2, 3]
+type = Helper
+trigger1 = NumHelper(161) = 0
+trigger1 = IsHelper(161) = 0
+trigger1 = statetype = C && anim = 121
+pos = 0,0
+postype = P1
+helpertype = Player
+name = "161"
+ID = 161
+postype = P1
+stateno = 161
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+facing = 1
+ignorehitpause = 1
+size.ground.back  = 0
+size.ground.front = 0
+size.air.back = 0
+size.air.front = 0
+size.height = 0
+
+[State -2, 4]
+type = Helper
+trigger1 = NumHelper(162) = 0
+trigger1 = IsHelper(162) = 0
+trigger1 = statetype = A && anim = 122
+pos = 0,0
+postype = P1
+helpertype = Player
+name = "162"
+ID = 162
+postype = P1
+stateno = 162
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+facing = 1
+ignorehitpause = 1
+size.ground.back  = 0
+size.ground.front = 0
+size.air.back = 0
+size.air.front = 0
+size.height = 0
+
+;---------------------------------------------------------------------------
+; States that are executed when in self's state file (use statedef -3)
+;---------------------------------------------------------------------------
+
+[Statedef -3]
+
+;The armor effect only occurs when your character not in his/her basic states.
+;(standing, walking, etc...)
+[State -3, VarSet]
+type = VarSet
+trigger1= (StateNo >= 0) && (MoveType != H)
+var(0) = StateNo
+ignorehitpause = 1
+
+[State -3, 3]
+type = VarSet
+trigger1 = (StateNo >= 0) && (MoveType = H)
+v = 5
+value = AnimElemNo(0)
+ignorehitpause = 1
+
+[State -2, 0]
+type = AssertSpecial
+trigger1 = 1
+flag = noautoturn
+
+[State -3, Armor2]
+type = HitOverride
+trigger1= (StateNo >= 0) && (MoveType != H)
+time = 2
+slot = 2
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+stateno = 8000
+ignorehitpause = 1
+
+;---------------------------------------------------------------------------
+;This controller plays a sound everytime the player lands from a jump, or
+;from a back-dash.
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+value = 1, 1
+
+[State -3, Landing Shake]
+type = EnvShake
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+time = 20
+freq = 60
+ampl = -10
+
+[State -3, PlaySnd]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 10
+trigger2 = stateno = 12
+value = 1,2
+volume = 200
+
+;===========================================================================
+;ACTIVE
+;===========================================================================
+
+[State -3 , 0]
+type = Varset
+triggerall = Var(13) != 1
+trigger1 = command = "cpu"
+trigger2 = command = "cpu1"
+trigger3 = command = "cpu2"
+trigger4 = command = "cpu3"
+trigger5 = command = "cpu4"
+trigger6 = command = "cpu5"
+trigger7 = command = "cpu6"
+trigger8 = command = "cpu7"
+trigger9 = command = "cpu8"
+trigger10 = command = "cpu9"
+v = 13
+value = 1
+
+[State -3 , 0]
+type = VarSet
+triggerall = Var(13) = 1
+trigger1 = Life <= 0
+trigger2 = P2Life <= 0
+trigger3 = Lose = 1
+trigger4 = Win = 1
+v = 13
+value = 0
+
+[State -3 , 0]
+type = Varset
+trigger1 = Var(13) = 1
+v = 6
+value = 1
+
+[State -3 , 1]
+type = Varset
+trigger1 = var(6) = 1
+trigger1 = StateNo = 5900
+v = 13
+value = 1
+
+;[State -3,1]
+;type = DisplayToClipboard
+;trigger1 = 1
+;text="var(23) = %d, var(20) = %d"
+;params = var(23),var(20);:=1,var(17)/.230
+
+[State -3, 1]
+type = DisplayToClipboard
+trigger1 = var(13) = 0
+text = "ACTIVE: Disabled"
+
+[State -3, 1]
+type = DisplayToClipboard
+trigger1 = var(13) = 1
+text = "ACTIVE: Enabled"
+
+;--------------------------------------------------
+;--------------------------------------------------
+[State -3]
+type = ChangeState
+value = 21
+triggerall = Var(13) = 1
+triggerall = command = "holdfwd"
+triggerall = statetype = S
+triggerall = random <= 900
+trigger1 = p2bodydist x > 20
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 23
+triggerall = Var(13) = 1
+triggerall = command = "holdback"
+triggerall = statetype = S
+triggerall = random <= 900
+trigger1 = p2bodydist x < -1
+trigger1 = ctrl = 1
+
+;--------------------------------------------------
+;--------------------------------------------------
+
+[State -3]
+type = ChangeState
+value = 200
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist x > 30
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 210
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist y < -90
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 230
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist x < 50
+trigger1 = p2bodydist x > 0
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 240
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist x < 100
+trigger1 = p2bodydist x > 50
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 250
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist x < -1
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 400
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist x < 40
+trigger1 = p2bodydist x > 0
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 410
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist x < 50
+trigger1 = p2bodydist x > 0
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 430
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist x < 70
+trigger1 = p2bodydist x > 0
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 440
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+trigger1 = p2bodydist x < 80
+trigger1 = p2bodydist x > 0
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 510
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 100
+trigger1 = p2bodydist x > 90
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 520
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 500
+trigger1 = p2bodydist x < -1
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 600
+triggerall = Var(13) = 1
+triggerall = statetype = A
+triggerall = random <= 200
+trigger1 = p2bodydist x < 60
+trigger1 = p2bodydist x > 20
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 610
+triggerall = Var(13) = 1
+triggerall = statetype = A
+triggerall = random <= 200
+trigger1 = p2bodydist y > -90
+trigger1 = p2bodydist x > 0
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 630
+triggerall = Var(13) = 1
+triggerall = statetype = A
+triggerall = random <= 200
+trigger1 = p2bodydist x < 60
+trigger1 = p2bodydist x > 0
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 640
+triggerall = Var(13) = 1
+triggerall = statetype = A
+triggerall = random <= 200
+trigger1 = p2bodydist x < 20
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 1000
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 300
+triggerall = power > 500
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 3000
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 300
+triggerall = power > 1000
+trigger1 = p2bodydist x > 80
+trigger1 = ctrl = 1
+
+[State -3]
+type = ChangeState
+value = 9000
+triggerall = Var(13) = 1
+triggerall = statetype = S
+triggerall = random <= 200
+triggerall = teammode = simul
+triggerall = power >= 2000
+trigger1 = p2bodydist x > 80
+trigger1 = ctrl = 1

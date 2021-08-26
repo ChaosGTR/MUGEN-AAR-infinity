@@ -1,0 +1,36 @@
+;------------------------------------------------------------------------------------
+;------------------------------------------------------------------------------------
+;EVA-02 - Tabris Version By TonyADV
+;------------------------------------------------------------------------------------
+;------------------------------------------------------------------------------------
+;----------------------------------
+;----------------------------------
+;EVA-02 Definition file by TonyADV
+;----------------------------------
+;----------------------------------
+
+; Player information
+[Info]
+name = "TABRIS"        
+displayname = "17th Angel" 
+versiondate = 21,03,2006    
+mugenversion = 04,14,2001 
+author = "TonyADV"         
+pal.defaults = 1,2  
+
+; Files for the player
+[Files]
+cmd      = 	 17\17.cmd   
+cns      = 	 17\17.cns   
+st       = 	 17\17.cns
+st1      = 	 17\17K.cns
+stcommon =  Basic.cns
+anim     = 	 17\17.air
+sprite   = 	 17\17.sff 
+sound    = 	 02.snd  
+pal1 = 	 02c.act		
+pal2 = 	 02b.act		
+
+[Arcade]
+intro.storyboard =  
+ending.storyboard = END02.def

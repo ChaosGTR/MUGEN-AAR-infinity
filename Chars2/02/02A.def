@@ -1,0 +1,36 @@
+;------------------------------------------------------------------------------------
+;------------------------------------------------------------------------------------
+;EVA-02 - Asuka Version By TonyADV
+;------------------------------------------------------------------------------------
+;------------------------------------------------------------------------------------
+;----------------------------------
+;----------------------------------
+;EVA-02 - Definition file by TonyADV
+;----------------------------------
+;----------------------------------
+
+; Player information
+[Info]
+name = "EVA-02"        
+displayname = "EVA-02" 
+versiondate = 21,03,2006     
+mugenversion = 04,14,2001 
+author = "TonyADV"         
+pal.defaults = 1,2,3 
+
+; Files for the player
+[Files]
+cmd      = 	  A\02.cmd   
+cns      = 	  A\02.cns   
+st       = 	  A\02.cns
+stcommon =  Basic.cns
+anim     = 	  A\02.air
+sprite   = 	  A\02.sff 
+sound    = 	  02.snd  
+pal1 = 	  02c.act		
+pal2 = 	  02b.act		
+pal3 = 	  02a.act
+
+[Arcade]
+intro.storyboard  = INTRO02A.def
+ending.storyboard = END01.def

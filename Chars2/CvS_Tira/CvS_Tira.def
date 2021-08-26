@@ -1,0 +1,42 @@
+; Definition file for Kung Fu Man
+; Contains all the filenames needed for the character
+
+; Player information
+[Info]
+name ="CVS_Tira"
+displayname ="Tira"
+versiondate =20,04,2019
+mugenversion=1.0
+author ="Blackwargreymon & chuchoryu"
+pal.defaults =6,3,4,2
+
+; Files for the player
+[Files]
+cmd     =Tira.cmd
+cns     =Coding/System.cns
+st      =Coding/System.cns
+stcommon =common1.cns
+sprite  =Tira.sff
+anim    =Tira.air
+sound   =Tira.snd
+pal1= 001.act
+pal2= 002.act
+pal3= 003.act
+pal4= 004.act
+pal5= 005.act
+pal6= 006.act
+pal7= 
+pal8= 
+pal9= 
+pal10= 
+pal11= 
+pal12= 
+st1=Coding/Normal.cns
+st2=Coding/Specials.cns
+st3=Coding/Helpers.cns
+st4=Coding/Supers.cns
+
+; Arcade mode
+[Arcade]
+intro.storyboard =
+ending.storyboard = ending.def

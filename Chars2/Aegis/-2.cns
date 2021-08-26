@@ -1,0 +1,106 @@
+[Statedef -2]
+;---------------------------------------------------------------------------
+;ダメージボイス
+[State -2]
+type = PlaySnd
+triggerall = Time = 1
+triggerall = Alive
+trigger1 = StateNo = 5000
+trigger2 = StateNo = 5010
+trigger3 = StateNo = 5020
+trigger4 = StateNo = 5070
+trigger5 = StateNo = 5080
+ignorehitpause = 1
+value = 5000,random%4
+channel = 0
+;===========================================================================
+;自爆死亡
+[State -1, seed]
+type = AssertSpecial
+trigger1 = var(5) = 99
+flag = invisible
+flag2 = noshadow
+ignorehitpause=1
+
+;===========================================================================
+;種割れ
+[State -1, seed]
+type = ChangeState
+value = 900
+triggerAll = var(53) = 1;フライング防止用
+triggerall = var(59) = 0
+triggerall = var(58) = 0
+triggerall = (command = "L") && (command = "holddown")
+triggerall = stateno != [900,809]
+triggerAll = statetype != A
+trigger1 = movetype = H
+ignorehitpause = 1
+persistent = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
+;---------------------------------------------------------------------------
+;種割れAI用
+[State -1, seed]
+type = ChangeState
+value = 900
+triggerAll = var(53) = 1;フライング防止用
+triggerall = var(59) = 1
+triggerall = var(58) = 0
+triggerall = stateno != [900,909]
+triggerAll = statetype != A
+trigger1 = life <= 350
+trigger2 = movetype = H
+trigger2 = life <= 100
+ignorehitpause = 1
+persistent = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
+
+;----------------------------------------------------------------------------
+[State -2, スラスターゲージ]
+type = Explod
+trigger1 = 1
+trigger1 = numexplod(10810) = 0
+anim = 10810
+removetime = -1
+bindtime = -1
+postype = left
+ID = 10810
+pos = 10 + ((teamside - 1) * 300),231
+ignorehitpause = 1
+ontop = 1
+ownpal = 1
+sprpriority = 2
+scale = ifelse((teamside - 1),-1 * fvar(11),1 * fvar(11)),1;2P,1P
+ignorehitpause = 1
+persistent = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
+[State 1000, 3]
+type = ModifyExplod
+trigger1 = Time >= 1
+ID = 10810
+scale = ifelse((teamside - 1),-1 * fvar(11),1 * fvar(11)),1;2P,1P
+
+[State -2, スラスターゲージ枠]
+type = Explod
+trigger1 = 1
+trigger1 = numexplod(10811) = 0
+anim = 10810 + teamside
+removetime = -1
+bindtime = -1
+postype = left
+ID = 10811
+pos = 10 + ((teamside - 1) * 300),230
+ignorehitpause = 1
+ontop = 1
+ownpal = 1
+sprpriority = 2
+scale = 1,1
+ignorehitpause = 1
+persistent = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999

@@ -1,0 +1,3 @@
+Faust's Astral heat makes use of a special anim with the number 5315. For this anim, you may use any sprite where the character's face is fully visible, and the axis must be aligned in between the eyes since that is where the new pair of eyes will appear. While it's not need in some cases, it is recommended to edit out the eyes on the sprite you are going to use. the time of this anim does not matter.
+
+If the character does not have anim 5315, then they will use sprite number 5002,0 for the pose instead with the new eyes aligned to its axis.

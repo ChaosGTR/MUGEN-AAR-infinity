@@ -1,0 +1,182 @@
+[Statedef -2]
+;---------------------------------------------------------------------------
+;種割れ後のあふたーいめーじ
+[State -2, Super D]
+type = AfterImage
+triggerall = var(2) != 0
+trigger1 = Time = 0
+trans = add1
+TimeGap  = 1
+FrameGap = 5
+time = 9999
+length = 15;150
+PalBright   =   0,  0,  0
+;PalContrast = 128,128,128
+PalContrast = 216,0,0
+PalAdd      =   0,  0,  0
+PalMul      =  1,1,1;.9, .9, .9
+trans = add1
+
+;===========================================================================
+;種割れ freedom用
+[State -1, seed]
+type = ChangeState
+value = 4000
+triggerall = var(59) = 0
+triggerall = var(2) = 0
+triggerall = (command = "L") && (command = "holddown")
+triggerall = stateno != [3000,3005]
+;triggerall = stateno != [3030,3033]
+triggerall = var(1) = 1
+trigger1 = statetype != A
+trigger2 = movetype = H
+ignorehitpause = 1
+persistent = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
+;---------------------------------------------------------------------------
+;種割れAI用
+[State -1, seed]
+type = ChangeState
+value = 4000
+triggerall = var(59) = 1
+triggerall = win = 0;p2life > 0 
+triggerall = var(2) = 0
+triggerall = stateno != [3000,3005]
+;triggerall = stateno != [3030,3033]
+triggerall = var(1) = 1
+triggerall = Pos Y = 0
+triggerall = statetype != A
+;triggerall = life <= 500
+triggerall = stateno != [4000,4002]
+trigger1 = life <= 350
+trigger2 = movetype = H
+trigger2 = life <= 100
+trigger3 = (movehit) && (stateno = 1040)
+ignorehitpause = 1
+persistent = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
+;---------------------------------------------------------------------------
+;ブーメラン
+[State -2,fvar1]
+type = VarAdd
+trigger1 = NumHelper(1001) = 1
+trigger1 = helper(1001),stateno = 1001
+trigger1 = helper(1001),Time <= 32
+fvar(1) = 6
+
+[State -2,fvar1]
+type = VarAdd
+trigger1 = NumHelper(1001) = 1
+trigger1 = helper(1001),stateno = 1001
+trigger1 = helper(1001),Time > 38
+fvar(1) = -6
+
+[State -2,fvar1]
+type = VarSet
+trigger1 = NumHelper(1001) = 0
+fvar(1) = 0
+
+[State -2,fvar2]
+type = VarAdd
+trigger1 = NumHelper(1001) = 1
+trigger1 = helper(1001),stateno = 1001
+trigger1 = (helper(1001),Time >= 22) && (helper(1001),Time <= 36)
+fvar(2) = 6
+
+[State -2,fvar2]
+type = VarAdd
+trigger1 = NumHelper(1001) = 1
+trigger1 = helper(1001),stateno = 1001
+trigger1 = helper(1001),Time >= 56
+fvar(2) = -6
+
+[State -2,fvar2]
+type = VarSet
+trigger1 = NumHelper(1001) = 0
+fvar(2) = -100
+
+[State -2,fvar3]
+type = VarAdd
+trigger1 = NumHelper(1002) = 1
+trigger1 = helper(1002),stateno = 1002
+trigger1 = helper(1002),Time <= 32
+fvar(3) = 6
+
+[State -2,fvar3]
+type = VarAdd
+trigger1 = NumHelper(1002) = 1
+trigger1 = helper(1002),stateno = 1002
+trigger1 = helper(1002),Time > 34
+fvar(3) = -6
+
+[State -2,fvar3]
+type = VarSet
+trigger1 = NumHelper(1002) = 0
+fvar(3) = 0
+
+[State -2,fvar4]
+type = VarAdd
+trigger1 = NumHelper(1002) = 1
+trigger1 = helper(1002),stateno = 1002
+trigger1 = (helper(1002),Time >= 24) && (helper(1002),Time <= 44)
+fvar(4) = -6
+
+[State -3,fvar4]
+type = VarAdd
+trigger1 = NumHelper(1002) = 1
+trigger1 = helper(1002),stateno = 1002
+trigger1 = helper(1002),Time >= 46
+fvar(4) = 6
+
+[State -2,fvar4]
+type = VarSet
+trigger1 = NumHelper(1002) = 0
+fvar(4) = -80
+
+[State -2, スラスターゲージ]
+type = Explod
+trigger1 = numexplod(7010) = 0
+anim = 7010
+removetime = -1
+bindtime = -1
+postype = left
+ID = 7010
+pos = 12 + ((teamside - 1) * 296),228
+ignorehitpause = 1
+ontop = 1
+ownpal = 1
+sprpriority = 2
+scale = ifelse((teamside - 1),-1.5 * fvar(11),1.5 * fvar(11)),1.5;2P,1P
+ignorehitpause = 1
+persistent = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
+[State 1000, 3]
+type = ModifyExplod
+trigger1 = Time >= 1
+ID = 7010
+scale = ifelse((teamside - 1),-1.5 * fvar(11),1.5 * fvar(11)),1.5;2P,1P
+
+[State -2, スラスターゲージ枠]
+type = Explod
+trigger1 = numexplod(7011) = 0
+anim = 7010 + teamside
+removetime = -1
+bindtime = -1
+postype = left
+ID = 7011
+pos = 0 + ((teamside - 1) * 318),215
+ignorehitpause = 1
+ontop = 1
+ownpal = 1
+sprpriority = 2
+scale = 1.5,1.5
+ignorehitpause = 1
+persistent = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999

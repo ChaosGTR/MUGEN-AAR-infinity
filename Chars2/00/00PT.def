@@ -1,0 +1,35 @@
+;------------------------------------------------------------------------------------
+;------------------------------------------------------------------------------------
+;Eva-00 By TonyADV
+;------------------------------------------------------------------------------------
+;------------------------------------------------------------------------------------
+;----------------------------------
+;----------------------------------
+;Eva-00 Definition file by TonyADV
+;----------------------------------
+;----------------------------------
+
+; Player information
+[Info]
+name = "EVA-00-Prototype"        
+displayname = "EVA-00" 
+versiondate = 21,03,2006     
+mugenversion = 04,14,2001 
+author = "TonyADV"         
+pal.defaults = 1,2 
+
+; Files for the player
+[Files]
+cmd      = 	 PT\00pt.cmd   
+cns      = 	 PT\00pt.cns   
+st       = 	 PT\00pt.cns
+stcommon =  Basic.cns
+sprite   = 	 PT\00pt.sff
+anim     = 	 00.air   
+sound    = 	 00.snd  
+pal1 = 	 PT\00pta.act		
+pal2 = 	 PT\00ptb.act		
+
+[Arcade]
+intro.storyboard  = INTRO00P.def
+ending.storyboard = END00P.def

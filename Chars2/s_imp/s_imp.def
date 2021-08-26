@@ -1,0 +1,22 @@
+; ここにキャラ情報を書いてください
+[Info]
+name = "SWORD IMPULSE"        ;キャラの名前
+displayname = "SWORD IMPULSE" ;表示されるキャラの名前
+versiondate = 10,06,2013    ;キャラの更新情報
+mugenversion = 10414   ;キャラが動くmugenのバージョン
+author = "天田志朗"         ;キャラの製作者名
+pal.defaults = 2      ;敵としてでるキャラのパレット
+
+; Files for the player
+[Files]
+cmd     = s_imp.cmd   ;キャラのコマンド
+cns     = s_imp.cns   ;キャラのプログラム
+st      = s_imp.cns   ;キャラのプログラム
+st1	= -3.cns
+st2	= -2.cns
+stcommon = common1.cns 
+sprite  = s_imp.sff   ;キャラの絵
+anim    = s_imp.air   ;キャラの動き
+sound   = s_imp.snd   ;キャラの音
+pal1    = s_imp.act  ;キャラの色（最大１２個）
+pal2    = s_imp2.act

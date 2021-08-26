@@ -1,0 +1,1 @@
+../../Ikemen_GO.exe -r neon
